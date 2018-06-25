@@ -31,11 +31,19 @@ In contrast, a program could be elegant but not very powerful. Imagine a framewo
 
 Koa and Vapr attempt to be both powerful and elegant, and both are quite successful at it when compared to existing alternatives within the Node.js ecosystem. For the rest of this section, we'll dive deeply into some examples of how they compare and contrast within these criteria.
 
-### 1.2. Routing
+### 1.2. Plugin system
 
-### 1.3. esponding to requests
+In contrast with most other HTTP frameworks, Koa and Vapr provide something much more powerful than a traditional *[connect-style](https://github.com/senchalabs/connect)* plugin system. The traditional system relies on passing control to so-called *next* functions which are provided as a parameter of each plugin. Each plugin typically performs its duty by mutating the *request* and/or *response* objects, and then invoking *next* when it's finished. If a plugin wishes to respond to the request, it invokes a method similar to *[response.end()](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback)*, and simply does not invoked *next*.
 
-### 1.4. Plugin system
+### 1.3. Routing
+
+Technically speaking, Koa does not have a built-in router. However, many consider [koa-router](https://github.com/alexmingoia/koa-router) to be Koa's defacto router (although written by a different author). Therefore, for the rest of this study we'll consider koa-router to be Koa's router.
+
+It's worth discussing the implications of implementing Koa's router as a separate plugin, rather than as part of the framework. For one, it allows "universal" plugins to be inserted before any routing takes place. This grants extra flexibility on the surface, but is in direct opposition with Vapr's concept of *route encapsulation* ([section 1.2](#12-plugin-system)). Furthermore, if for some reason there were logic that truly needed to be executed before routing, it could be implemented by wrapping the Vapr app within another function (because a Vapr app is really just a configurable function). Such is normal practice elsewhere within JavaScript applications.
+
+(TODO: write the rest of this section)
+
+### 1.4. Responding to requests
 
 ### 1.5. Asynchronous interface
 
