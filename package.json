@@ -13,7 +13,7 @@
     "koa",
     "vapr",
     "http",
-    "frameworks",
+    "framework",
     "middleware",
     "shootout",
     "benchmark"
