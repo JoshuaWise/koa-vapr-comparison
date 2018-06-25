@@ -33,7 +33,7 @@ Koa and Vapr attempt to be both powerful and elegant, and both are quite success
 
 ### 1.2. Plugin system
 
-In contrast with most other HTTP frameworks, Koa and Vapr provide something much more powerful than a traditional *[connect-style](https://github.com/senchalabs/connect)* plugin system. The traditional system relies on passing control to so-called *next* functions which are provided as a parameter of each plugin. Each plugin typically performs its duty by mutating the *request* and/or *response* objects, and then invoking *next* when it's finished. If a plugin wishes to respond to the request, it invokes a method similar to *[response.end()](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback)*, and simply does not invoked *next*.
+In contrast with most other HTTP frameworks, Koa and Vapr provide something much more powerful than a traditional *[connect-style](https://github.com/senchalabs/connect)* plugin system. The traditional system relies on passing control to so-called *next* functions which are provided as a parameter to each plugin. Each plugin typically performs its duty by mutating the *request* and/or *response* objects, and then invokes *next* when it's finished. If a plugin wishes to respond to the request, it invokes a method similar to *[response.end](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback)*, and simply does not invoke *next*.
 
 ### 1.3. Routing
 
