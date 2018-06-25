@@ -12,10 +12,10 @@ The goal of this study is to convince readers that Vapr is the superior foundati
 
 This study is broken into four main sections.
 
-1. Power and Elegance
-2. Feature Completeness
-3. Stability and Robustness
-4. Performance
+1. [Power and Elegance](#1-power-and-elegance)
+2. [Feature Completeness](#2-feature-completeness)
+3. [Stability and Robustness](#3-stability-and-robustness)
+4. [Performance](#4-performance)
 
 Each section has associated code examples within the [cases](./cases/) directory. Some of these examples are executable via scripts found within the [package.json](./package.json) file.
 
