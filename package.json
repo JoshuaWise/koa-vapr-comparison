@@ -1,0 +1,33 @@
+{
+  "name": "koa-vapr-comparison",
+  "version": "0.1.0",
+  "description": "An opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.",
+  "main": "cases/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaWise/koa-vapr-comparison.git"
+  },
+  "keywords": [
+    "koa",
+    "vapr",
+    "http",
+    "frameworks",
+    "middleware",
+    "shootout",
+    "benchmark"
+  ],
+  "author": "Joshua Wise <joshuathomaswise@gmail.com>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/JoshuaWise/koa-vapr-comparison/issues"
+  },
+  "homepage": "https://github.com/JoshuaWise/koa-vapr-comparison#readme",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0",
+    "vapr": "^0.5.0"
+  }
+}
