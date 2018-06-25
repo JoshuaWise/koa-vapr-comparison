@@ -29,8 +29,8 @@ Each section has associated code examples within the [cases](./cases/) directory
 
 ## 3. Stability and Robustness
 
-(TBD)
+(TODO)
 
 ## 4. Performance
 
-(TBD)
+(TODO)
