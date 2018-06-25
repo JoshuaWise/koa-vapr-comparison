@@ -21,7 +21,7 @@ Each section has associated code examples within the [cases](./cases/) directory
 
 ## 1. Power and Elegance
 
-### Defining the criteria
+### 1.1. Defining the criteria
 
 Programs are often described in terms of varying "power" and "elegance". The former refers to how easy it is to correctly perform complex tasks, where generally fewer lines of code equates to greater power. The latters refers to the intuitiveness of turning simple programs into more complex ones, where requiring fewer changes and fewer new concepts equates to greater elegance. The two properties are closely related, but independent of each other.
 
@@ -31,13 +31,13 @@ In contrast, a program could be elegant but not very powerful. Imagine a framewo
 
 Koa and Vapr attempt to be both powerful and elegant, and both are quite successful at it when compared to existing alternatives within the Node.js ecosystem. For the rest of this section, we'll dive deeply into some examples of how they compare and contrast within these criteria.
 
-### Routing
+### 1.2. Routing
 
-### Responding to requests
+### 1.3. esponding to requests
 
-### Plugin system
+### 1.4. Plugin system
 
-### Asynchronous interface
+### 1.5. Asynchronous interface
 
 ## 2. Feature Completeness
 
