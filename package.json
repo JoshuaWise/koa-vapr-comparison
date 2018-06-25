@@ -2,7 +2,6 @@
   "name": "koa-vapr-comparison",
   "version": "0.1.0",
   "description": "An opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.",
-  "main": "cases/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
