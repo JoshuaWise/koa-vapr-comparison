@@ -27,7 +27,7 @@ Programs are often described in terms of varying "power" and "elegance". The for
 
 As an example, imagine a framework that provides very high-level tools, but they are limited in the ways they can be used. Perhaps a fully-featured inheritance system exists, but lots of configuration and boilerplate is required to create a minimal environment. Such a feature would be considered powerful but not elegant. An example of this is PHP's [Laravel](https://github.com/laravel/framework) framework.
 
-In contrast, a program could be elegant but not very powerful. Imagine a framework that provided a composable plugin system, but did not provide any other high-level features for writing HTTP services. Such a system would be elegant but not powerful—many complex tasks would need to be writen by hand. An example of this is Node.js's [Connect](https://github.com/senchalabs/connect) framework.
+In contrast, a program could be elegant but not very powerful. Imagine a framework that provides a composable plugin system, but does not provide any other high-level features for writing HTTP services. Such a system would be elegant but not powerful—many complex tasks would need to be writen by hand. An example of this is Node.js's [Connect](https://github.com/senchalabs/connect) framework.
 
 Koa and Vapr attempt to be both powerful and elegant, and both are quite successful at it when compared to existing alternatives within the Node.js ecosystem. For the rest of this section, we'll dive deeply into some examples of how they compare and contrast within these criteria.
 
