@@ -108,7 +108,7 @@ There is also a distinction between the nature of [event emitters](https://nodej
 
 There are some situations where broadcasters are appropriate, but a request body is not one of those. The request body is practically meaningless (and probably invalid from a syntactic point of view) if it's not reliably received in its entirety. To solve this difficult problem, organizations such as [WHATWG](https://streams.spec.whatwg.org/), [ReactiveX](http://reactivex.io/documentation/observable.html), and [Dart](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams), have developed higher-level paradigms that achieve reliability by only allowing a single event subscriber, buffering events until the subscription is created (we'll call these *SS devices*, meaning single-subscriber). Since Node.js's [streams](https://nodejs.org/api/stream.html) are meant to be used this way (despite actually allowing multiple subscribers), we'll also call them SS devices.
 
-In contrast with broadcasters, which often emit any number of event types, SS devices typically only emit a few event types—*data*, *end*, and *error*.
+In contrast with broadcasters, which often emit any number of event types, SS devices typically only emit a few different event types—*data*, *end*, and *error*.
 
 
 
