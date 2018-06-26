@@ -114,6 +114,9 @@ An alternative, more simple solutions exists. In Vapr, routing is performed via 
 
 ### 2.4 Routing capabilities
 
+(nested routers; bad)
+(regex routes)
+
 ## 3. Stability and Robustness
 
 ### 3.1 Defining the criteria
@@ -135,7 +138,7 @@ An alternative, more simple solutions exists. In Vapr, routing is performed via 
 (next is just a function, late handlers are mutually exclusive with responses)
 (immutability)
 (improper async actions)
-(improper response crafting, invalid mutually exclusive respons headers)
+(improper response crafting, invalid mutually exclusive response headers)
 
 ### 3.5 Dependencies
 
