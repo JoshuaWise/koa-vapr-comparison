@@ -70,7 +70,7 @@ Most response headers are tied to other aspects of the response—examples inclu
 
 ### 1.3. Routing
 
-Technically speaking, Koa does not have a built-in router. However, many consider [koa-router](https://github.com/alexmingoia/koa-router) to be Koa's defacto router (although written by a different author). Therefore, for the rest of this study we'll consider koa-router to be Koa's router.
+Technically speaking, Koa does not have a built-in router. However, many consider [koa-router](https://github.com/alexmingoia/koa-router) to be Koa's defacto router (although written by a different author). Therefore, for the remainder of the study we'll consider koa-router to be Koa's router.
 
 It's worth discussing the implications of implementing Koa's router as a separate plugin, rather than as part of the framework. For one, it allows "universal" plugins to be inserted before any routing takes place. This grants extra flexibility on the surface, but is in direct opposition with Vapr's concept of *route encapsulation* ([section 1.2](#12-plugin-system)). Furthermore, if for some reason there were logic that truly needed to be executed before routing, it could be implemented by wrapping the Vapr app within another function (because a Vapr app is really just a configurable function). Such is normal practice elsewhere within JavaScript applications.
 
