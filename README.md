@@ -106,9 +106,39 @@ Node.js is a heavily asynchronous, event loop driven environment. Asynchronous p
 
 There is also a distinction between the nature of [event emitters](https://nodejs.org/api/events.html) and [streams](https://nodejs.org/api/stream.html). The former is called a *broadcaster*, in that it does not care who is subscribed to it, it simply broadcasts events as they occur. When using a broadcaster, there's no way of guaranteeing that the events received are a complete representation of the system, or just a partial representation (typically because the subscriber started listening for events after some were already emitted). Within the context of an HTTP framework for example, this can happen if two different plugins try to read the request body, but the second plugin is executed at a later point in time than the first.
 
-There are some situations where broadcasters are appropriate, but a request body is not one of those. The request body is practically meaningless (and probably invalid from a syntactic point of view) if it's not reliably received in its entirety. To solve this difficult problem, organizations such as [WHATWG](https://streams.spec.whatwg.org/), [ReactiveX](http://reactivex.io/documentation/observable.html), and [Dart](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams), have developed higher-level paradigms that achieve reliability by only allowing a single event subscriber, buffering events until the subscription is created (we'll call these *SS devices*, meaning single-subscriber). Since Node.js's [streams](https://nodejs.org/api/stream.html) are meant to be used this way (despite actually allowing multiple subscribers), we'll also call them SS devices.
+There are some situations where broadcasters are appropriate, but a request body is not one of those. The request body is practically meaningless (and probably invalid from a syntactic point of view) if it's not reliably received in its entirety. To solve this difficult problem, organizations such as [WHATWG](https://streams.spec.whatwg.org/) and [Dart](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams) have developed higher-level paradigms that achieve reliability by only allowing a single event subscriber, buffering events until the subscription is created (we'll call these *SS devices*, meaning single-subscriber). Since Node.js's [streams](https://nodejs.org/api/stream.html) are meant to be used this way (despite actually allowing multiple subscribers), we'll also call them SS devices.
 
-In contrast with broadcasters, which often emit any number of event types, SS devices typically only emit a few different event types—*data*, *end*, and *error*.
+In contrast with broadcasters, which often emit any number of event types, SS devices typically only emit a few different event types—*data*, *end*, and *error*. Another point of contrast is that SS devices are able to buffer their own events, allowing the programmer to be more flexible about when the data is consumed. This already grants a significant increase in power when compared to the more general broadcaster, but we can go further.
+
+All previously mentioned SS devices—except Node.js streams—implement error propagation. Error propagation is the property that if one device in a chain encounters an error, the entire chain will be destroyed, preventing a memory leak. Promises have a similar behavior (despite not needing to manage resource handles, being single events), which is one of the primary reasons they're desired over callbacks. Node.js streams can be piped together, but they do not perform error propagation.
+
+Another feature exhibited by the SS devices—again, except Node.js streams—is backward cancellation. This is the property that if a subscriber is no longer interested in the event stream, it can destroy upstream devices, preventing unnecessary resource usage.
+
+As we dive deeper, we draw yet another distinction among paradigms—this time within the family of SS devices. One group contains [WHATWG streams](https://streams.spec.whatwg.org/) and [Node.js streams](https://nodejs.org/api/stream.html), while the other contains [Dart streams](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams). The former group is mostly concerned with representing streams of octets, and is not so concerned with the general case (despite supporting "object streaming" in a rudimentary sense). The latter group is very concerned with the general case of streaming any type of event, and is equally capable of representing streams of octets. Dart streams do not sacrifice any elegance or power in exchange for general purporse use.
+
+Being general purpose, Dart streams implement many high-level methods for transforming event stream in various ways. For example, there are methods analogous to familiar [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) such as *map*, *filter*, *reduce*, and *find*, but also methods that only become relevant in the asynchronous context such as *timeout*. The less elegant Node.js streams and WHATWG streams require many complex lines of code to accomplish the same simple tasks.
+
+```dart
+// Processing a text file with Dart streams
+var lines = await readLines(filename)
+  .where(grep)
+  .map(truncate)
+  .join('\n');
+```
+
+```js
+// Processing a text file with Node.js streams
+var lines = [];
+var stream = readLines(filename);
+stream.on('data', (line) => {
+  if (grep(line)) {
+    lines.push(truncate(line));
+  }
+});
+```
+
+
+
 
 
 
