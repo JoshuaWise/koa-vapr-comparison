@@ -120,9 +120,22 @@ An alternative, more simple solutions exists. In Vapr, routing is performed via 
 
 ### 3.2 Abnormal input
 
+(whitespace in headers)
+(aborted requests)
+(unnormalized unicode)
+(unnormalized percent-encodings)
+
 ### 3.3 Invalid input
 
+(invalid url)
+(invalid host header)
+
 ### 3.4 Unsound program logic
+
+(next is just a function, late handlers are mutually exclusive with responses)
+(immutability)
+(improper async actions)
+(improper response crafting, invalid mutually exclusive respons headers)
 
 ### 3.5 Dependencies
 
