@@ -155,9 +155,9 @@ Perhaps the biggest problem with Node.js streams is that they aren't composable 
 
 Vapr embraces the Dart-style stream. More specifically, it uses a brand of SS device called a *[river](https://github.com/JoshuaWise/wise-river)* (created by the same author as this study). Rivers are an indirect port of Dart streams into the JavaScript ecosystem, with a few design modifications. Rivers are a subclass of promises, meaning they share the same API, and can be treated as a single asynchronous event. In addition, the River constructor argument is nearly identical to the Promise constructor argument, as seen [here](https://github.com/JoshuaWise/wise-river#usage). As a matter of future-proofing, rivers are also [async iterables](https://github.com/tc39/proposal-async-iteration). Rivers propagate errors, exhibit backward cancellation, and are suitable for events of any type.
 
-![Graph of the categorization of relevant asynchronous constructs](./images/async-graph.png)
-
 Koa was written in a time when awareness of high-level asynchronous constructs was not common. Despite utilizing promises and async functions, Koa uses Node.js streams to represent request and response bodies, resulting in reduction of both power and elegance.
+
+![Graph of the categorization of relevant asynchronous constructs](./images/async-graph.png)
 
 ## 2. Feature Completeness
 
