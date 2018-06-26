@@ -98,7 +98,7 @@ A common theme exists between how Koa handles plugins and how it handles routes:
 
 In complex programs it's not abnormal to have multiple routes which could be matched from the same request URI. In this case, the "winning" route is simply whichever one was defined first. One could imagine performing the innocent action of changing the import order of modules (perhaps due to new [linting rules](https://eslint.org/)), only to find that the behavior of the HTTP service has changed as a result. This behavior is practically never desirable.
 
-An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by a [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup.
+An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup.
 
 ### 1.5. Responding to requests
 
