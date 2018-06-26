@@ -98,16 +98,40 @@ A common theme exists between how Koa handles plugins and how it handles routes:
 
 In complex programs it's not abnormal to have multiple routes which could be matched from the same request URI. In this case, the "winning" route is simply whichever one was defined first. One could imagine performing the innocent action of changing the import order of modules (perhaps due to new [linting rules](https://eslint.org/)), only to find that the behavior of the HTTP service has changed as a result. This behavior is practically never desirable.
 
-An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup. Besides the  performance benefits of this approach ([section 4.1](#41-radix-trees-vs-regular-expressions)), it also creates an environment where routes are matched deterministically, independent of declaration order. While technically this is a *decrease* in power, we believe it's a power that most programmers don't want to deal with. The result is an increase in elegance for complex programs.
+An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup. Besides the  performance benefits of this approach ([section 4.1](#42-scaling-a-router)), it also creates an environment where routes are matched deterministically, independent of declaration order. While technically this is a *decrease* in power, we believe it's a power that most programmers don't want to deal with. The result is an increase in elegance for complex programs.
 
-### 1.5. Responding to requests
+### 1.5. Asynchronous interface
 
-### 1.6. Asynchronous interface
+
 
 ## 2. Feature Completeness
 
+### 2.1 Defining the criteria
+
+### 2.2 Request representation
+
+### 2.3 Response representation
+
+### 2.4 Routing capabilities
+
 ## 3. Stability and Robustness
+
+### 3.1 Defining the criteria
+
+### 3.2 Abnormal input
+
+### 3.3 Invalid input
+
+### 3.4 Unsound program logic
+
+### 3.5 Dependencies
 
 ## 4. Performance
 
-### 4.1 Radix trees vs regular expressions
+### 4.1 Defining the criteria
+
+### 4.2 Scaling a router
+
+### 4.3 Benchmarking errors
+
+### 4.4 Overall latency
