@@ -119,29 +119,38 @@ As we dive deeper, we draw yet another distinction among paradigms—this time w
 Being general purpose, Dart streams implement many high-level methods for transforming event stream in various ways. For example, there are methods analogous to familiar [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) such as *map*, *filter*, *reduce*, and *find*, but also methods that only become relevant in the asynchronous context such as *timeout*. The less elegant Node.js streams and WHATWG streams require many complex lines of code to accomplish the same simple tasks.
 
 ```dart
-// Processing a text file with Dart streams
-var lines = await readLines(filename)
-  .where(grep)
-  .map(truncate)
-  .join('\n');
+// Parsing a JSON request body (with Dart streams)
+dynamic parse(Stream<Uint8List> body) async {
+  return body
+    .map((chunk) => chunk.toList())
+    .reduce(concat)
+    .then((list) => JSON.decode(UTF8.decode(list)))
+}
 ```
 
 ```js
-// Processing a text file with Node.js streams
-var lines = [];
-var stream = readLines(filename);
-stream.on('data', (line) => {
-  if (grep(line)) {
-    lines.push(truncate(line));
-  }
-});
-stream.on('end', () => {
-  callback(null, lines.join('n'));
-});
-stream.on('error', (err) => {
-  callback(err);
-});
+// Parsing a JSON request body (with Node.js streams)
+function parse(body) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    body.on('data', (chunk) => {
+      chunks.push(chunk);
+    });
+    body.on('end', () => {
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks)));
+      } catch (err) {
+        reject(err);
+      }
+    });
+    body.on('error', reject);
+    body.on('aborted', () => {
+      reject(new Error('The request was aborted'));
+    });
+  });
+}
 ```
+
 
 
 
