@@ -70,7 +70,7 @@ Most response headers are tied to other aspects of the response—examples inclu
 
 ### 1.3 Route Encapsulation
 
-There are philosophical differences between what defines a "route" in Koa vs in Vapr. In Koa, the entire application is actually one big "route" (this is the same as in [Connect](https://github.com/senchalabs/connect) and [Express](https://github.com/expressjs/express)). Individual routes (e.g., `/articles/:id`) and sub-routes (e.g.,`/articles/:id/render`) are handled just like any other plugin. There may be plugins that take place before every route, plugins that take place for every sub-route of a group, etc. Nested cascading of plugins is commonplace in this kind of system.
+There are philosophical differences between what defines a "route" in Koa vs in Vapr. In Koa, the entire application is actually one big "route" (this is the same as in [Connect](https://github.com/senchalabs/connect) and [Express](https://github.com/expressjs/express)). Individual routes (e.g., `/articles/:id`) are handled just like any other plugin. There may be plugins that take place before every route, plugins that take place for every sub-route of a group, etc. Nested cascading of plugins is commonplace in this kind of system.
 
 At first it appears elegant, but it suffers from the same problems as any inheritance system. In recent years, programming languages have [shifted away](https://en.wikipedia.org/wiki/Composition_over_inheritance) from systems based on inheritance towards systems to based on composition. The realization is that inheritance trees are frequently imperfect, and this realization is never more true than in the case of route construction.
 
