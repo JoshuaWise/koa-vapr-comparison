@@ -68,17 +68,37 @@ Through the use of higher-order plugins, Vapr solves the problem elegantly and p
 
 Most response headers are tied to other aspects of the response—examples include Content-Type, Content-Encoding, Location, Trailer, etc. However, in some cases a response header should be set regardless of outcome, such as the Server header. In the latter case, the header can simply be applied within the error handler or afterwards. In summary, if the header is related to data within the response, it's correct to discard the header when the status of the response changes; if the header is *unrelated* to the response, it can be applied regardless of whether the original response object was previously replaced or not. This is exactly what the Vapr plugin system allows you to do—with no extra effort on the programmer—regardless of program complexity.
 
-### 1.3. Routing
+### 1.3 Route Encapsulation
+
+There are philosophical differences between what defines a "route" in Koa vs in Vapr. In Koa, the entire application is actually one big "route" (this is the same as in [Connect](https://github.com/senchalabs/connect) and [Express](https://github.com/expressjs/express)). Individual routes (e.g., `/articles/:id`) and sub-routes (e.g.,`/articles/:id/render`) are handled just like any other plugin. There may be plugins that take place before every route, plugins that take place for every sub-route of a group, etc. Nested cascading of plugins is commonplace in this kind of system.
+
+At first it appears elegant, but it suffers from the same problems as any inheritance system. In recent years, programming languages have [shifted away](https://en.wikipedia.org/wiki/Composition_over_inheritance) from systems based on inheritance towards systems to based on composition. The realization is that inheritance trees are frequently imperfect, and this realization is never more true than in the case of route construction.
+
+As we go deeper, let's use the example above (`/articles/:id` and `/articles/:id/render`). It may seem intuitive (and indeed likely) that any sub-route within `/articles/:id` needs to retrieve the selected article from a database. Rather than including that logic in every sub-route, it's standard to include it as a plugin before the `/articles/:id` sub-router. This way, when the route handler for `/articles/:id/render` is invoked, the relevant article will have already been retrieved.
+
+However, now imagine that a new route is created called `/articles/:id/delete`. Deleting the article does not require retrieving it, but it's being retrieved anyways. The obvious solution is to split the `/articles/:id` router into two; one where the article is retrieved, one where it isn't. However, if this plugin sharing goes unnoticed (which it often does in large programs), incorrect and often arbitrary logic will leak into unsuspecting places. It's obvious to see that as program complexity grows, this inheritance system is not sustainable. Therefore, Vapr chooses the principle of composition instead of inheritance.
+
+In Vapr, routes are *encapsulated* from other routes. No route inherits from another, and any shared plugins are declared explicitly. The result is that each route has its own complete set of plugins, and changing one route will never affect another route. To avoid verbosity and to enable easy composition, the *use* method in Vapr can accept any number of functions or arrays of functions (and any depth of nested arrays). The plugin lists are flattened at startup time, to avoid unnecessary overhead.
+
+```js
+const commonPlugins = [plugin1(), plugin2()];
+route.use(commonPlugins, plugin3());
+route.use(plugin4());
+```
+
+As seen above, you can still have the power of reusable logic, but everything is explicitly declared, rather than having a waterfall of plugins being applied implicitly based on the route's position relative to other routes.
+
+### 1.4. Routing
 
 Technically speaking, Koa does not have a built-in router. However, many consider [koa-router](https://github.com/alexmingoia/koa-router) to be Koa's defacto router (although written by a different author). Therefore, for the remainder of the study we'll consider koa-router to be Koa's router.
 
-It's worth discussing the implications of implementing Koa's router as a separate plugin, rather than as part of the framework. For one, it allows "universal" plugins to be inserted before any routing takes place. This grants extra flexibility on the surface, but is in direct opposition with Vapr's concept of *route encapsulation* ([section 1.2](#12-plugin-system)). Furthermore, if for some reason there were logic that truly needed to be executed before routing, it could be implemented by wrapping the Vapr app within another function (because a Vapr app is really just a configurable function). Such is normal practice elsewhere within JavaScript applications.
+It's worth discussing the implications of implementing Koa's router as a separate plugin, rather than as part of the framework. For one, it allows "universal" plugins to be inserted before any routing takes place. This grants extra flexibility on the surface, but is in direct opposition with Vapr's concept of *route encapsulation* ([section 1.2](#13-route-encapsulation)). Furthermore, if for some reason there were logic that truly needed to be executed before routing, it could be implemented by wrapping the Vapr app within another function (because a Vapr app is really just a configurable function). Such is normal practice elsewhere within JavaScript applications.
 
 (TODO: write the rest of this section)
 
-### 1.4. Responding to requests
+### 1.5. Responding to requests
 
-### 1.5. Asynchronous interface
+### 1.6. Asynchronous interface
 
 ## 2. Feature Completeness
 
