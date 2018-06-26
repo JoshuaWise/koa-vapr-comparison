@@ -42,13 +42,13 @@ Another major feature of both Koa and Vapr is the use of stack-like flow control
 Despite their similarities, Koa and Vapr each have important differences in their plugin systems. Koa implements *late logic* through the use of async functions, while Vapr utilizes [higher-order plugins](https://en.wikipedia.org/wiki/Higher-order_function) that return *[late handlers](https://github.com/JoshuaWise/vapr#functional-middleware)*. Both implementations result in similar levels of elegance, but we argue that higher-order plugins are the more powerful solution.
 
 ```js
-// Late logic in Koa with async functions
+// Late logic in Koa (async functions)
 route.use(async (ctx, next) => {
   await next();
   ctx.response.set('X-Some-Header', 'foo');
 });
 
-// Late logic in Vapr with higher-order plugins
+// Late logic in Vapr (higher-order plugins)
 route.use((req) => (res) => {
   res.headers.set('X-Some-Header', 'foo');
 });
