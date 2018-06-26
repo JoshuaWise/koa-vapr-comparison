@@ -110,7 +110,7 @@ There are some situations where using a broadcaster is appropriate, but the case
 
 In contrast with broadcasters, which emit arbitrary event types, SS devices typically only emit a few specific event types—*data*, *end*, and *error*. Another point of contrast is that SS devices are able to buffer their own events, allowing the programmer to be more flexible about when the data is consumed. This already grants a significant increase in power when compared to the broadcaster—but we can go further.
 
-All previously mentioned SS devices—except Node.js streams—implement error propagation. Error propagation is the property that if one device in a chain encounters an error, the entire chain will be destroyed, preventing a memory leak. Promises have a similar behavior (despite not needing to manage resource handles, being single events), which is one of the primary reasons they're desired over callbacks. Node.js streams can be piped together, but they do not perform error propagation.
+All previously mentioned SS devices—except Node.js streams—implement error propagation. Error propagation is the property that if one device in a chain encounters an error, the entire chain will be destroyed, preventing a memory leak. Promises have a similar behavior (despite not needing to manage resource handles, being single events), which is one of the primary reasons they're desired over callbacks. Node.js streams can be piped together, but they do not exhibit error propagation.
 
 Another feature exhibited by the SS devices—again, except Node.js streams—is backward cancellation. This is the property that if a subscriber is no longer interested in the event stream, it can destroy upstream devices, preventing unnecessary resource usage.
 
