@@ -162,7 +162,7 @@ function parse(body) {
 }
 ```
 
-Koa was written in a time when the usage of high-level asynchronous constructs was not common (at least within the Node.js community). Despite utilizing promises and async functions, Koa uses Node.js streams to represent request and response bodies, resulting in a reduction of both power and elegance, and opening up opportunities for improper resource management (memory leaks).
+Koa was written in a time when the usage of high-level asynchronous constructs was not common (at least within the Node.js community). Despite utilizing promises and async functions, Koa uses Node.js streams to represent request and response bodies, resulting in a reduction of both power and elegance.
 
 ![Graph of the categorization of relevant asynchronous constructs](./images/async-graph.png)
 
