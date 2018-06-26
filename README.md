@@ -114,19 +114,9 @@ All previously mentioned SS devices—except Node.js streams—implement error p
 
 Another feature exhibited by the SS devices—again, except Node.js streams—is backward cancellation. This is the property that if a subscriber is no longer interested in the event stream, it can destroy upstream devices, preventing unnecessary resource usage.
 
-As we dive deeper, we draw yet another distinction among paradigms—this time within the family of SS devices. One group contains [WHATWG streams](https://streams.spec.whatwg.org/) and [Node.js streams](https://nodejs.org/api/stream.html), while the other contains [Dart streams](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams). The former group is mostly concerned with representing streams of octets, and is not so concerned with the general case (despite supporting "object streaming" in a rudimentary sense). The latter group is very concerned with the general case of streaming any type of event, and is equally capable of representing streams of octets. Dart streams do not sacrifice any elegance or power in exchange for general purporse use.
+As we dive deeper, we draw yet another distinction among paradigms—this time within the family of SS devices. One group contains [WHATWG streams](https://streams.spec.whatwg.org/) and [Node.js streams](https://nodejs.org/api/stream.html), while the other contains [Dart streams](https://www.dartlang.org/tutorials/language/streams#single-subscription-streams). The former group is mostly concerned with representing streams of octets, and is not so concerned with the general case (despite supporting "object streaming" in a rudimentary sense). The latter group is very concerned with the general case of streaming any type of event, and is equally capable of representing streams of octets. Dart streams do not sacrifice any elegance or power in exchange for general purpose use. Any desirable behavior utilized by the former group (such as counting bytes, rather than objects) can be reimplemented in a system that supports the general case.
 
 Being general purpose, Dart streams implement many high-level methods for transforming event stream in various ways. For example, there are methods analogous to familiar [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) such as *map*, *filter*, *reduce*, and *find*, but also methods that only become relevant in the asynchronous context such as *timeout*. The less elegant Node.js streams and WHATWG streams require many complex lines of code to accomplish the same simple tasks.
-
-```dart
-// Parsing a JSON request body (with Dart streams)
-dynamic parse(Stream<Uint8List> body) async {
-  return body
-    .map((chunk) => chunk.toList())
-    .reduce(concat)
-    .then((list) => JSON.decode(UTF8.decode(list)))
-}
-```
 
 ```js
 // Parsing a JSON request body (with Node.js streams)
@@ -151,13 +141,23 @@ function parse(body) {
 }
 ```
 
+```dart
+// Parsing a JSON request body (with Dart streams)
+dynamic parse(Stream<Uint8List> body) async {
+  return body
+    .map((chunk) => chunk.toList())
+    .reduce(concat)
+    .then((list) => JSON.decode(UTF8.decode(list)))
+}
+```
 
+Perhaps the biggest problem with Node.js streams is that they aren't composable with promises. None of the methods or interfaces associated with Node.js streams interact with promises in any way. In fact, programmers are forced to resort to callbacks, or to use the stream like a simple broadcaster. There's an obvious incompatibility when attempting to interweave the two constructs. The same problem does not exist when interweaving their synchronous counterparts; array methods accept single values, arrays can be treated as single values, etc.
 
+Vapr embraces the Dart-style stream. More specifically, it uses a brand of SS device called a *[river](https://github.com/JoshuaWise/wise-river)* (created by the same author as this study). Rivers are an indirect port of Dart streams into the JavaScript ecosystem, with a few design modifications. Rivers are a subclass of promises, meaning they share the same API, and can be treated as a single asynchronous event. In addition, the River constructor argument is nearly identical to the Promise constructor argument, as seen [here](https://github.com/JoshuaWise/wise-river#usage). As a matter of future-proofing, rivers are also [async iterables](https://github.com/tc39/proposal-async-iteration). Rivers propagate errors, exhibit backward cancellation, and are suitable for events of any type.
 
+![Graph of the categorization of relevant asynchronous constructs](./images/async-graph.png)
 
-
-
-
+Koa was written in a time when awareness of high-level asynchronous constructs was not common. Despite utilizing promises and async functions, Koa uses Node.js streams to represent request and response bodies, resulting in reduction of both power and elegance.
 
 ## 2. Feature Completeness
 
