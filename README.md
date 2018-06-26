@@ -49,7 +49,7 @@ route.use(async (ctx, next) => {
 });
 
 // Late logic in Vapr (higher-order plugins)
-route.use(req => res => {
+route.use((req) => (res) => {
   res.headers.set('X-Some-Header', 'foo');
 });
 ```
