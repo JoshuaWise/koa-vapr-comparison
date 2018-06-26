@@ -135,6 +135,12 @@ stream.on('data', (line) => {
     lines.push(truncate(line));
   }
 });
+stream.on('end', () => {
+  callback(null, lines.join('n'));
+});
+stream.on('error', (err) => {
+  callback(err);
+});
 ```
 
 
