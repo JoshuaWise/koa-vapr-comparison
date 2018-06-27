@@ -168,7 +168,7 @@ Koa was written in a time when the usage of high-level asynchronous constructs w
 
 ## 2. Feature Completeness
 
-When evaluating the usefulness of a software tool, one of the main areas of concern is with regard to the tool's "feature completeness".
+When evaluating the usefulness of a software tool, "feature completeness" is usually a primary concern. This refers to which actions a user of the tool can or cannot perform, typically in a binary sense. Where the previous [section](#1-power-and-elegance) analyzed the *quality* of comparable features between the two frameworks, this section aims to point out any differences in the *existence* of such features.
 
 ### 2.1 Defining the criteria
 
