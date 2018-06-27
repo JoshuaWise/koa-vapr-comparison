@@ -168,6 +168,8 @@ Koa was written in a time when the usage of high-level asynchronous constructs w
 
 ## 2. Feature Completeness
 
+When evaluating the usefulness of a software tool, one of the main areas of concern is with regard to the tool's "feature completeness".
+
 ### 2.1 Defining the criteria
 
 ### 2.2 Request representation
