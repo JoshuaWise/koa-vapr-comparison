@@ -17,7 +17,7 @@ This study is broken into four main sections.
 3. [Stability and Robustness](#3-stability-and-robustness)
 4. [Performance](#4-performance)
 
-The audience of this study is assumed to have had exposure to relevant programming concepts such as asynchronicity and higher-order functions, which are frequently utilized in Node.js. A familiarity with the [HTTP protocol](https://tools.ietf.org/html/rfc7230) is also assumed, and direct experience with popular HTTP frameworks such as [Express](https://github.com/expressjs/express) is preferred. Many external code modules will be referenced throughout the text, knowledge of which is not required (but preferred). A few of these modules are actually written by the same author as this study and will be identified as such, as to be explicit about unavoidable biases.
+The audience of this study is assumed to have had exposure to relevant programming concepts such as asynchronicity and higher-order functions, which are frequently utilized in Node.js. A familiarity with the [HTTP protocol](https://tools.ietf.org/html/rfc7230) is also assumed, and direct experience with popular HTTP frameworks such as [Express](https://github.com/expressjs/express) is preferred. Many external code modules will be referenced throughout the text, knowledge of which is not required (but preferred). A few of these modules are actually written by the same author as this study and will be identified as such, as to be explicit about implied biases.
 
 ## 1. Power and Elegance
 
