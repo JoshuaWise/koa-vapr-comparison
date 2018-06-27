@@ -17,7 +17,11 @@ This study is broken into four main sections.
 3. [Stability and Robustness](#3-stability-and-robustness)
 4. [Performance](#4-performance)
 
-Each section has associated code examples within the [cases](./cases/) directory. Some of these examples are executable via scripts found within the [package.json](./package.json) file.
+Each section has associated code examples inline. Also, some examples exist within the [cases](./cases/) directory, and are executable via scripts found within the [package.json](./package.json) file. Callouts will be made in the text when referencing these executable examples.
+
+The text assumes a basic understanding of relevant programming concepts such as asynchronicity and higher-order functions, which are heavily utilized in Node.js. A familiarity with the HTTP protocol is also assumed, and direct experience with popular HTTP frameworks such as [Express](https://github.com/expressjs/express) is preferred.
+
+Throughout the study, we'll be referencing many seemingly third party code modules. A few of these modules are actually written by the same author as this study and will identified as such, as to be explicit about implied conflicts of interest.
 
 ## 1. Power and Elegance
 
