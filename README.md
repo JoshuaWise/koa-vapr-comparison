@@ -181,6 +181,7 @@ In closed systems, feature completeness is easily agreed upon and well defined. 
 ### 2.4 Routing capabilities
 
 (nested routers; bad)
+(virtual hosting)
 (regex routes)
 
 ## 3. Stability and Robustness
