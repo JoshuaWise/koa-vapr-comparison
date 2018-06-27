@@ -21,7 +21,7 @@ Each section has associated code examples inline. Also, some examples exist with
 
 The text assumes prior exposure to relevant programming concepts such as asynchronicity and higher-order functions, which are heavily utilized in Node.js. A familiarity with the HTTP protocol is also assumed, and direct experience with popular HTTP frameworks such as [Express](https://github.com/expressjs/express) is preferred.
 
-Throughout the study, we'll be referencing many seemingly third party code modules. A few of these modules are actually written by the same author as this study and will identified as such, as to be explicit about implied conflicts of interest.
+Throughout the study, we'll be referencing many external code modules. A few of these modules are actually written by the same author as this study and will identified as such, as to be explicit about implied conflicts of interest.
 
 ## 1. Power and Elegance
 
