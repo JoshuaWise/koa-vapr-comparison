@@ -191,6 +191,8 @@ In any HTTP framework, information about incomming requests must be readily avai
 - [request.acceptsCharsets()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptscharsetscharsets): performs a boolean check for whether the "charset" parameter within the Content-Type header matches one or more patterns
 - [request.acceptsLanguages()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptslanguageslangs): performs a boolean check for whether the Accept-Language header matches one or more patterns
 
+Many of these features can be implemented in less than a line of code. For example, `request.subdomains` can be implemented in Vapr as `request.target.hostname.split('.').slice(0, -2).reverse()`. Other features here are very opinionated and not flexible, which could cause many application developers to reach for a different (very similar) tool. An example of this is `request.query`, which uses a preconfigured query parser with no way of customization. Imagine you were building a [JSON API](http://jsonapi.org/) service that relies on JSON API's usage of nested query paramters (e.g., `fields[Article]`)—you would need to use a more flexible query parser, being sure to ignore the one built into your underlying framework. No feature listed above cannot be implemented as a Vapr plugin in a variety of ways, each differing based on the nature of the application being built.
+
 ### 2.3 Response representation
 
 ### 2.4 Routing capabilities
