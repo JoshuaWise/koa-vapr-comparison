@@ -197,6 +197,8 @@ While the lack of these features may seem like an inconvenience to some, Vapr's 
 
 ### 2.3 Response representation
 
+In [section 1.2](#12-plugin-system) we discussed the major difference between response objects in Koa and in Vapr.
+
 ### 2.4 Routing capabilities
 
 (nested routers; bad)
