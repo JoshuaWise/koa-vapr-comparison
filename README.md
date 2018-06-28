@@ -285,7 +285,7 @@ In contrast with unexpected input, another source of instability within a progra
 
 (improper response crafting, invalid mutually exclusive response headers)
 
-In Koa, the *next* function is used to travel through the application's plugin tree, returning a promise for when the plugin stack has finally returned to its original point. When a plugin needs to execute *late logic*, it's standard to *await* this promise in an async function, executing the late logic afterwards. While this seems like a great idea in principle, in practice it introduces fragility to the system. Imagine that the programmer forgets to include the *await* operator. The plugin would be executing in parallel with the rest of the plugin tree, putting the program into an undefined state. One feature of Vapr's higher-order plugins ([section 1.2](#12-plugin-system)) is that the risk is reduced by avoiding this specific case of programmer error.
+In Koa, the *next* function is used to travel through the application's plugin tree, returning a promise for when the plugin stack has finally returned to its original point. When a plugin needs to execute late logic, it's standard to *await* this promise in an async function, executing the late logic afterwards. While this seems like a great idea in principle, in practice it introduces fragility to the system. Imagine that the programmer forgets to include the *await* operator. The plugin would be executing in parallel with the rest of the plugin tree, putting the program into an undefined state. One feature of Vapr's higher-order plugins ([section 1.2](#12-plugin-system)) is that the risk is reduced by avoiding this specific case of programmer error.
 
 ### 3.5 Dependencies
 
