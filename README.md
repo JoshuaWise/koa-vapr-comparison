@@ -210,7 +210,7 @@ As in the previous section, Koa implements additional tools for setting various 
 - [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): performs a boolean check for whether the Content-Type header currently matches one or more patterns
 - [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the status code to *304*, sets the Location header to a given string, and sets the body to some hard-coded HTML
 - [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): sets the Content-Type and Content-Disposition headers based on a file extension
-- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) NPM module, which appends a string to the Vary header field
+- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) NPM module, which appends a string to the Vary header
 
 As in the previous section, many of these features can be implemented in less than one line of code, such as `.vary()`, `.length`, `.lastModified`, and `.etag`. Other features here are opinionated or inflexible, such as `.redirect()`. Many commonly used HTTP headers don't have an associated shorthand in Koa, so programmers may find themselves frequently checking the Koa documentation to see if one exists, or they might just ignore these shorthands entirely and set the header directly. Either way, Vapr has no opinion for such application-specific functionality.
 
