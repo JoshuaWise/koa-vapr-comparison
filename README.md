@@ -98,7 +98,7 @@ A common theme exists between how Koa handles plugins and how it handles routes:
 
 In complex programs it's not abnormal to have multiple routes which could be matched from the same request URI. In this case, the "winning" route is simply whichever one was defined first. One could imagine performing the innocent action of changing the import order of modules (perhaps due to new [linting rules](https://eslint.org/)), only to find that the behavior of the HTTP service has changed as a result. This behavior is practically never desirable.
 
-An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup. Besides the  performance benefits of this approach ([section 4.1](#42-scaling-a-router)), it also creates an environment where routes are matched deterministically, independent of declaration order. While technically this is a *decrease* in power, we believe it's a power that most programmers don't want to deal with. The result is an increase in elegance for complex programs.
+An alternative, more simple solutions exists. In Vapr, routing is performed via a single hash lookup. Parameterized routes (e.g., `/:id`) are implemented by [radix tree](https://en.wikipedia.org/wiki/Radix_tree) lookup. Besides the  performance benefits of this approach ([section 4.2](#42-scaling-a-router)), it also creates an environment where routes are matched deterministically, independent of declaration order. While technically this is a *decrease* in power, we believe it's a power that most programmers don't want to deal with. The result is an increase in elegance for complex programs.
 
 ### 1.5. Asynchronous interface
 
@@ -231,7 +231,7 @@ The expected behavior of an HTTP router in Node.js is well established. In short
 
 Unlike Koa, Vapr allows programmers to override the default *404* or *405* behaviors, if desired. This can be useful, for example, if a default redirection or help page should emitted for unrecognized requests. Additionally, while the Koa router only supports routing based on pathname, the Vapr router is able to route requests based on hostname as well, which can be useful for [virtual hosting](https://en.wikipedia.org/wiki/Virtual_hosting) or proxying requests. Koa plugins can be used to handle these cases, but at the time of this writing no such plugins are being actively maintained on [NPM](https://www.npmjs.com/) (to be fair, since Vapr is a completely new framework, its plugin ecosystem is virtually non-existent).
 
-
+Unlike in Vapr, routing in Koa is performed by linearly scanning a list of [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) until a match is found. Because regular expressions are used internally, Koa allows programmers to create routes from regular expressions directly too (they are not limited to string pathnames). Vapr does not use regular expressions internally, for reasons described in sections [1.4](#14-routing) and [4.2](#42-scaling-a-router), and so routing based on regular expression is not supported.
 
 
 (overriding the 404 or 405 handlers)
