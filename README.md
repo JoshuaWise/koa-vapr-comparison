@@ -210,7 +210,7 @@ As in the previous section, Koa implements additional tools for setting various 
 - [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): performs a boolean check for whether the Content-Type header currently matches one or more patterns
 - [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the status code to *304*, sets the Location header to a given string, and sets the body to some hard-coded HTML
 - [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): sets the Content-Type and Content-Disposition headers based on a file extension
-- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) NPM module, which appends a string to the Vary header
+- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) [NPM](https://www.npmjs.com/) module, which appends a string to the Vary header
 
 As in the previous section, many of these features can be implemented in less than one line of code, such as `.vary()`, `.length`, `.lastModified`, and `.etag`. Other features here are opinionated or inflexible, such as `.redirect()`, which outputs hard-coded HTML.
 
@@ -227,12 +227,14 @@ route.use(req => res => {
 
 ### 2.4 Routing capabilities
 
-The expected behavior of an HTTP router in Node.js is well established. In short, they're expected to route requests based on pathnames, support parameterized path segments (e.g., `/:id`), and report *404 Not Found* when a matching route does not exist. In addition, the routers in both Koa and Vapr will report *405 Method Not Allowed* when an unsupported HTTP method is requested on an existent pathname, although this is a less common feature throughout the Node.js ecosystem (many routers just emit *404* in these cases). Despite the similarities, the two routers are implemented differently, and therefore have a slightly different feature set.
+The expected behavior of an HTTP router in Node.js is well established. In short, they're expected to route requests based on pathnames and HTTP methods, support parameterized path segments (e.g., `/:id`), and report *404 Not Found* when a matching route does not exist. In addition, the routers in both Koa and Vapr will report *405 Method Not Allowed* when an unsupported HTTP method is requested on an existent pathname, although this is a less common feature throughout the Node.js ecosystem (many routers just emit *404* in these cases). Despite the similarities, the two routers are implemented differently, and therefore have slightly different feature sets.
+
+Unlike Koa, Vapr allows programmers to override the default *404* or *405* behavior, if desired. This can be useful, for example, if a default redirection or help page should emitted for unrecognized requests. Additionally, while the Koa router only supports routing based on pathname, the Vapr router is able to route requests based on hostname as well, which can be useful for [virtual hosting](https://en.wikipedia.org/wiki/Virtual_hosting) or proxying requests. Koa plugins can be used to handle these cases, but at the time of this writing no such plugins are being actively maintained on [NPM](https://www.npmjs.com/) (to be fair, since Vapr is a completely new framework, its plugin ecosystem is virtually non-existent).
 
 
 
 
-
+(overriding the 404 or 405 handlers)
 (virtual hosting)
 (regex routes)
 
