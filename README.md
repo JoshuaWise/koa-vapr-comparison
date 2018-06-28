@@ -245,7 +245,9 @@ A program is considered *stable* if it is able to continue operating sensibly in
 
 ### 3.2 Abnormal input
 
-Abnormal conditions are commonplace in any network-based program. Connections can be destroyed unexpectedly, network packets of arbitrarily strange data can be received, and the complexity of serialization formats (such as [escape sequences](https://en.wikipedia.org/wiki/Escape_sequence)) can go unnoticed. HTTP services in Node.js are no exception to this.
+Abnormal conditions are commonplace in any network-based program. Connections can be destroyed unexpectedly, network packets of arbitrarily strange data can be received, and the complexity of serialization formats (such as [escape sequences](https://en.wikipedia.org/wiki/Escape_sequence)) can go unnoticed. All of this remains true for HTTP services in Node.js.
+
+
 
 (whitespace in headers)
 (aborted requests)
