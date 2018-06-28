@@ -255,11 +255,13 @@ In a variety of internet standards documents, such as the HTTP specification ([R
 
 > An executable example exists for the topic above: `npm run uri-normalization`
 
-The HTTP specification ([RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)) expresses that any whitespace which leads or trails a header value should not be interpreted as part of the value. Strangely, the core [http](https://nodejs.org/api/http.html) module correctly strips *leading* whitespace but not *trailing* whitespace. Without proper header framing, programs are vulnerable to bugs that are difficult to identify; a parser could throw an error for seemingly valid input; a regular expression could return a false negative. Koa does not implement correct header framing—Vapr fixes such behavior.
+The HTTP specification ([RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)) expresses that any whitespace which leads or trails a header value should not be interpreted as part of the value. Strangely, the core [http](https://nodejs.org/api/http.html) module correctly strips *leading* whitespace but not *trailing* whitespace. Without proper header framing, programs are vulnerable to bugs that are difficult to identify; a parser could throw an error for seemingly valid input; a regular expression could return a false negative. While Vapr fixes such behavior, Koa does not implement correct header framing.
 
+> An executable example exists for the topic above: `npm run header-artifacts`
 
-(whitespace in headers)
-(aborted requests)
+Koa and Vapr take similar approaches to dealing with aborted requests. An HTTP client may at any time, either intentionally or not, destroy the underlying connection, regardless of the server's state in handling the request. This can be a difficult problem to deal with, but both frameworks handle the situation gracefully. Neither Koa nor Vapr expose functions for explicitly sending data the client; both frameworks implicitly send the response when all plugins have finished operating. Not only does this lift an unnecessary burden from the programmer, but it also allows the underlying framework to be intellegent about how to handle the connection. If the connection was destroyed, the response can simply be discarded. Both frameworks operate on this principle.
+
+> An executable example exists for the topic above: `npm run aborted-requests`
 
 ### 3.3 Invalid input
 
