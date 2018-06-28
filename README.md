@@ -255,6 +255,7 @@ In a variety of internet standards documents, such as the HTTP specification ([R
 
 > An executable example exists for the topic above: `npm run uri-normalization`
 
+The HTTP specification ([RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)) expresses that any whitespace which leads or trails a header value should not be interpreted as part of the value. Strangely, the [http](https://nodejs.org/api/http.html) module does indeed ignore *leading* whitespace, but not *trailing* whitespace. Vapr fixes this behavior by removing any trailing whitespace as well. Without properly framing header values, a parser could falsely report an error or a regular expressions could return a false negative.
 
 
 (whitespace in headers)
