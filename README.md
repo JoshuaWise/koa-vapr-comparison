@@ -279,7 +279,7 @@ Strict security-related requirements are also defined for the contents of the Ho
 
 ### 3.4 Unsound program logic
 
-In contrast with unexpected input, another source of instability within a program comes from the program itself. Fragile program logic is frequently introduced by programmers because of short deadlines, hasty refactoring, or poor programming practices. If the backbone of a program (such as an HTTP framework) is also fragile, small errors which could potentially be handled gracefully instead quickly compound into large, program-breaking errors. A stable system should make it very difficult to produce such errors, and should be able to handle a variety of programming styles.
+In contrast with unexpected input, another source of instability within a program comes from the program itself. Fragile program logic is frequently introduced by programmers because of short deadlines, hasty refactoring, or poor programming practices. If the backbone of a program (such as an HTTP framework) is also fragile, small errors which could potentially be handled gracefully instead compound into large, program-breaking errors. A stable system should make it very difficult to produce such errors, and should be able to handle a variety of programming styles.
 
 It's worth noting that there is a difference between *handling an error gracefully* and *pretending an error is not an error*. Programs should never "swallow" errors unless the error should not have been generated in the first place. Both Koa and Vapr understand and abide by this principle.
 
