@@ -199,6 +199,21 @@ While the lack of these features may seem like an inconvenience to some, Vapr's 
 
 In [section 1.2](#12-plugin-system) we discussed major differences in how Koa and Vapr each deal with response objects. Aside from those differences, differences related to feature completeness also exist (and reflect the same differences in philosophy [already described](#22-request-representation)).
 
+Both Koa and Vapr transparently allow setting the common properties of an HTTP response, such as [status code](https://tools.ietf.org/html/rfc7230#section-3.1.2), reason phrase (also called the "status message"), and [headers](https://tools.ietf.org/html/rfc7230#section-3.2). However, Koa does not provide an interface for setting [trailer](https://tools.ietf.org/html/rfc7230#section-4.1.2) fields. For applications that require this functionality, programmers will need to bypass Koa and use core [http](https://nodejs.org/api/http.html) functions. Although trailers are a less commonly used feature of HTTP, the protocol considers them a core feature rather than an extension. For this reason, Vapr provides a high-level, promise-based interface for them.
+
+However, as in the previous section, Koa also implements additional tools for interacting with various common properties of HTTP responses.
+
+- [`.length`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselength): TODO
+- [`.type`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsetype-1): TODO
+- [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): TODO
+- [`.etag`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseetag): TODO
+- [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): TODO
+- [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): TODO
+- [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): TODO
+- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): TODO
+
+TODO: body (json)
+
 ### 2.4 Routing capabilities
 
 (nested routers; bad)
