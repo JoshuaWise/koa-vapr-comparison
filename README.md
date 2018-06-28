@@ -208,7 +208,7 @@ As in the previous section, Koa implements additional tools for setting various 
 - [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): sets the Last-Modified header, invoking [`.toUTCString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) if a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object is given
 - [`.etag`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseetag): sets the ETag header, wrapping the string in quotes if it isn't already
 - [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): performs a boolean check for whether the Content-Type header currently matches one or more patterns
-- [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the Location header, sets the status code to *304*, and sets the body to some hard-coded HTML
+- [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the Location header, the status code to *304*, and the body to some hard-coded HTML
 - [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): sets the Content-Type and Content-Disposition headers based on a file extension
 - [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) NPM module, which appends a string to the Vary header field
 
