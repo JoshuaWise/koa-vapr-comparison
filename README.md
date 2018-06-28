@@ -178,6 +178,19 @@ In closed systems, feature completeness is easily agreed upon and well defined. 
 
 In any HTTP framework, information about incomming requests must be readily available to the host application. Both Koa and Vapr provide all of such information, but their approaches on delivery differ. Both frameworks transparently provide things like the [request target](https://tools.ietf.org/html/rfc7230#section-5.3) (also called the "URI"), [route parameters](https://github.com/JoshuaWise/vapr#routing), [headers](https://tools.ietf.org/html/rfc7230#section-3.2), [protocol version](https://tools.ietf.org/html/rfc7230#section-2.6), etc., but Koa takes the additional step of providing methods for interpreting various common headers. As an example, Koa provides [a method](https://github.com/koajs/koa/blob/master/docs/api/request.md#content-negotiation) for reasoning about the meaning of an [Accept](https://tools.ietf.org/html/rfc7231#section-5.3.2) header, should one exist in the request. Vapr provides no such method, relying on plugins to provide such functionality when needed. This is a common theme between the two frameworks but, for completeness, we attempt to list the specific features that Vapr omits (at least, as it is at the time of this writing).
 
+- [.length](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestlength): the Content-Length header parsed as a number
+- [.type](https://github.com/koajs/koa/blob/master/docs/api/request.md#requesttype): the Content-Type header void of any parameters
+- [.charset](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestcharset): the "charset" parameter within the Content-Type header
+- [.query](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestquery): the parsed query string of the URI
+- [.fresh](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestfresh): an interpretation of request cache freshness, combining logic of various conditional headers such as If-None-Match/ETag, and If-Modified-Since/Last-Modified, which only works after certain response headers have been set
+- [.subdomains](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestsubdomains): the hostname of the request, split into an array by the "." separating character, void of the last two domain labels
+- [.idempotent](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestidempotent): an indicator of whether the request method is one of GET, HEAD, PUT, DELETE, OPTIONS, or TRACE
+- [.is()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestistypes): performs a boolean check for whether the Content-Type header matches one or more patterns
+- [.accepts()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptstypes): performs a boolean check for whether the Accept header matches one or more patterns
+- [.acceptsEncodings()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptsencodingsencodings): performs a boolean check for whether the Accept-Encoding header matches one or more patterns
+- [.acceptsCharsets()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptscharsetscharsets): performs a boolean check for whether the "charset" parameter within the Content-Type header matches one or more patterns
+- [.acceptsLanguages()](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptslanguageslangs): performs a boolean check for whether the Accept-Language header matches one or more patterns
+
 ### 2.3 Response representation
 
 ### 2.4 Routing capabilities
