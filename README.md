@@ -286,6 +286,8 @@ Strict security-related requirements are also defined for the contents of the Ho
 
 ### 3.5 Dependencies
 
+(koa has many, vapr has few)
+
 ## 4. Performance
 
 ### 4.1 Defining the criteria
