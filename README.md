@@ -281,14 +281,11 @@ Strict security-related requirements are also defined for the contents of the Ho
 
 In contrast with unexpected input, another source of instability within a program comes from the program itself. Fragile program logic is frequently introduced by programmers because of short deadlines, hasty refactoring, or poor programming practices. If the backbone of a program (such as an HTTP framework) is also fragile, small errors which could potentially be handled gracefully instead compound into large, program-breaking errors. A stable system should make it very difficult to produce such errors, and should be able to handle a variety of programming styles.
 
-It's worth noting that there is a difference between handling an error gracefully and pretending that an error is not an error. The latter of these is colloquially known as "swallowing" the error. Programs should never swallow errors unless the error should not have been generated in the first place. Both Koa and Vapr understand and abide by this principle.
-
-
-
-(next is just a function, late handlers are mutually exclusive with responses)
 (immutability)
-(improper async actions)
+
 (improper response crafting, invalid mutually exclusive response headers)
+
+In Koa, the *next* function is used to travel through the application's plugin tree, returning a promise for when the plugin stack has finally returned to its original point. When a plugin needs to execute *late logic*, it's standard to *await* this promise in an async function, executing the late logic afterwards. While this seems like a great idea in principle, in practice it introduces fragility to the system. Imagine that the programmer forgets to include the *await* operator. The plugin would be executing in parallel with the rest of the plugin tree, putting the program into an undefined state. One feature of Vapr's higher-order plugins ([section 1.2](#12-plugin-system)) is that the risk is reduced by avoiding this specific case of programmer error.
 
 ### 3.5 Dependencies
 
