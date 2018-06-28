@@ -201,7 +201,7 @@ In [section 1.2](#12-plugin-system) we discussed major differences in how Koa an
 
 Both Koa and Vapr transparently allow setting the common properties of an HTTP response, such as [status code](https://tools.ietf.org/html/rfc7230#section-3.1.2), [reason phrase](https://tools.ietf.org/html/rfc7230#section-3.1.2) (also called the "status message"), and [headers](https://tools.ietf.org/html/rfc7230#section-3.2). However, Koa does not provide an interface for setting [trailer](https://tools.ietf.org/html/rfc7230#section-4.1.2) fields. For applications that require this functionality, programmers will need to bypass Koa and use core [http](https://nodejs.org/api/http.html) functions. Although trailers are a less commonly used feature of HTTP, the protocol considers them a core feature rather than an extension, so Vapr provides a high-level, promise-based interface for them.
 
-As in the previous section, Koa implements additional tools for setting various common properties of HTTP responses.
+As in the previous section, Koa implements additional tools for setting various properties of HTTP responses.
 
 - [`.length`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselength): TODO
 - [`.type`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsetype-1): TODO
