@@ -255,7 +255,7 @@ In a variety of internet standards documents, such as the HTTP specification ([R
 
 > An executable example exists for the topic above: `npm run uri-normalization`
 
-The HTTP specification ([RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)) expresses that any whitespace which leads or trails a header value should not be interpreted as part of the value. Strangely, the core [http](https://nodejs.org/api/http.html) module correctly strips *leading* whitespace, but not *trailing* whitespace. Vapr fixes this behavior by removing any trailing whitespace as well. Without properly framing header values, a parser could throw an error for valid input; a regular expression could return a false negative. Koa inherits the incorrect framing provided by the core [http](https://nodejs.org/api/http.html) module, leaving itself vulnerable to bugs that are difficult to identify.
+The HTTP specification ([RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)) expresses that any whitespace which leads or trails a header value should not be interpreted as part of the value. Strangely, the core [http](https://nodejs.org/api/http.html) module correctly strips *leading* whitespace but not *trailing* whitespace. Vapr fixes this behavior by removing any trailing whitespace as well. Without properly framing header values, a parser could throw an error for valid input; a regular expression could return a false negative. Koa inherits the incorrect framing provided by the core [http](https://nodejs.org/api/http.html) module, leaving itself vulnerable to bugs that are difficult to identify.
 
 
 (whitespace in headers)
