@@ -201,18 +201,27 @@ In [section 1.2](#12-plugin-system) we discussed major differences in how Koa an
 
 Both Koa and Vapr transparently allow setting the common properties of an HTTP response, such as [status code](https://tools.ietf.org/html/rfc7230#section-3.1.2), [reason phrase](https://tools.ietf.org/html/rfc7230#section-3.1.2) (also called the "status message"), and [headers](https://tools.ietf.org/html/rfc7230#section-3.2). However, Koa does not provide an interface for setting [trailer](https://tools.ietf.org/html/rfc7230#section-4.1.2) fields. For applications that require this functionality, programmers will need to bypass Koa and use core [http](https://nodejs.org/api/http.html) functions. Although trailers are a less commonly used feature of HTTP, the protocol considers them a core feature rather than an extension, so Vapr provides a high-level, promise-based interface for them.
 
-As in the previous section, Koa implements additional tools for setting various properties of HTTP responses.
+As in the previous section, Koa implements additional tools for setting various common properties of HTTP responses.
 
-- [`.length`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselength): TODO
-- [`.type`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsetype-1): TODO
-- [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): TODO
-- [`.etag`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseetag): TODO
-- [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): TODO
-- [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): TODO
-- [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): TODO
-- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): TODO
+- [`.length`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselength): sets the Content-Length header
+- [`.type`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsetype-1): sets the Content-Type header, converting file extension inputs to a corresponding MIME type
+- [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): sets the Last-Modified header, invoking [`.toUTCString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) if a a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object is given
+- [`.etag`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseetag): sets the ETag header, wrapping the string in quotes if it isn't already
+- [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): performs a boolean check for whether the response body currently matches one or more patterns
+- [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the status code to *304*, sets the Location header, and sets the body to some hard-coded HTML
+- [`.attachment()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseattachmentfilename): sets the Content-Type and Content-Disposition headers based on a file extension
+- [`.vary()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsevaryfield): invokes the [vary](https://www.npmjs.com/package/vary) NPM module, which appends a string to the Vary header field
 
-TODO: body (json)
+As in the previous section, many of these features can be implemented in less than one line of code, such as `.vary()`, `.length`, `.lastModified`, and `.etag`. Other features here are opinionated or inflexible, such as `.redirect()`. Many commonly used HTTP headers don't have an associated shorthand in Koa, so programmers may find themselves frequently checking the Koa documentation to see if one exists, or they might just ignore these shorthands entirely and set the header directly. Either way, Vapr has no opinion for such application-specific functionality.
+
+It's worth noting that Koa also provides direct support for JSON response bodies, which are very frequently used in Node.js services. Since JSON is not part of HTTP, Vapr is happy to relegate it to a plugin. JSON responses can be implemented as a two-line plugin in Vapr.
+
+```js
+route.use(req => res => {
+  res.body = JSON.stringify(res.body);
+  res.headers.set('Content-Type', 'application/json; charset=utf-8');
+});
+```
 
 ### 2.4 Routing capabilities
 
