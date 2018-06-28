@@ -205,7 +205,7 @@ As in the previous section, Koa implements additional tools for setting various 
 
 - [`.length`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselength): sets the Content-Length header
 - [`.type`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responsetype-1): sets the Content-Type header, converting file extension inputs to a corresponding MIME type
-- [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): sets the Last-Modified header, invoking [`.toUTCString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) if a a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object is given
+- [`.lastModified`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responselastmodified-1): sets the Last-Modified header, invoking [`.toUTCString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) if a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object is given
 - [`.etag`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseetag): sets the ETag header, wrapping the string in quotes if it isn't already
 - [`.is()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseistypes): performs a boolean check for whether the response body currently matches one or more patterns
 - [`.redirect()`](https://github.com/koajs/koa/blob/master/docs/api/response.md#responseredirecturl-alt): sets the status code to *304*, sets the Location header, and sets the body to some hard-coded HTML
