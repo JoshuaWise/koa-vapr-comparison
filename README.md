@@ -273,7 +273,7 @@ In Node.js, the URI of a request (which is exposed as `request.url`), is left in
 
 > An executable example exists for the topic above: `npm run uri-validation`
 
-Similar to the request URI, strict security-related requirements are defined for the contents of the Host header, if provided. Most HTTP frameworks, including Koa, simply read the contents of the header blindly, exposing the value to application logic without respecting the validation mandated in [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.1.1). As in the previous case, Vapr performs the correct validation, refusing to service potentially malicious requests.
+Strict security-related requirements are also defined for the contents of the Host header, if provided. Most HTTP frameworks, including Koa, simply read the contents of the header blindly, exposing the value to application logic without respecting the validation mandated in [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.1.1). As in the previous case, Vapr performs the correct validation, refusing to service potentially malicious requests.
 
 > An executable example exists for the topic above: `npm run host-validation`
 
