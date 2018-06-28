@@ -182,7 +182,7 @@ In any HTTP framework, information about incomming requests must be readily avai
 - [`request.type`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requesttype): the Content-Type header void of any parameters
 - [`request.charset`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestcharset): the "charset" parameter within the Content-Type header
 - [`request.query`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestquery): the parsed query string of the URI
-- [`request.fresh`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestfresh): an interpretation of request cache freshness, combining logic of various conditional headers such as If-None-Match/ETag, and If-Modified-Since/Last-Modified, which only works after certain response headers have been set
+- [`request.fresh`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestfresh): an interpretation of request cache freshness, combining logic of various conditional headers such as If-None-Match/ETag and If-Modified-Since/Last-Modified, which only works after certain response headers have been set
 - [`request.subdomains`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestsubdomains): the hostname of the request, split into an array by the "." separating character, void of the last two domain labels
 - [`request.idempotent`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestidempotent): an indicator of whether the request method is one of GET, HEAD, PUT, DELETE, OPTIONS, or TRACE
 - [`request.is()`](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestistypes): performs a boolean check for whether the Content-Type header matches one or more patterns
