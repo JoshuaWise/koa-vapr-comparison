@@ -241,7 +241,7 @@ Up until this point, the majority of the study has focused on theory and philoso
 
 A program is considered *robust* if it's capable of correctly identifying and handling abnormal or invalid input. For example, a program that accepts arbitrary string input but fails to correctly process [multibyte](https://en.wikipedia.org/wiki/UTF-8) characters would not be considered robust.
 
-A program is considered *stable* if it is able to continue operating sensibly in the case of minor programmer error or abnormal programming practices. As an example, when writing a complex, heavily asynchronous program, it's difficult to maintain stability while using tools that can easily be used incorrectly (such as callback-passing instead of promises). When using lower-level tools, seemingly innocent changes can introduce program-breaking bugs. A stable system is one where it's very difficult to introduce major bugs, and where abnormal conditions are resolved in a sensible way.
+A program is considered *stable* if it is able to continue operating sensibly in the case of minor programmer error or poor programming practices. As an example, when writing a complex, heavily asynchronous program, it's difficult to maintain stability while using tools that can easily be used incorrectly (such as callback-passing instead of promises). When using lower-level tools, seemingly innocent changes can introduce program-breaking bugs. A stable system is one where it's very difficult to introduce major bugs, and where abnormal conditions are resolved in a sensible way.
 
 ### 3.2 Abnormal input
 
