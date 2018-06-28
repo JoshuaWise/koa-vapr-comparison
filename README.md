@@ -233,11 +233,6 @@ Unlike Koa, Vapr allows programmers to override the default *404* or *405* behav
 
 Unlike in Vapr, routing in Koa is performed by linearly scanning a list of [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) until a match is found. Because regular expressions are used internally, Koa allows programmers to create routes from regular expressions directly too (they are not limited to string pathnames). Vapr does not use regular expressions internally, for reasons described in sections [1.4](#14-routing) and [4.2](#42-scaling-a-router), and so routing based on regular expression is not supported.
 
-
-(overriding the 404 or 405 handlers)
-(virtual hosting)
-(regex routes)
-
 ## 3. Stability and Robustness
 
 ### 3.1 Defining the criteria
