@@ -176,7 +176,7 @@ In closed systems, feature completeness is easily agreed upon and well defined. 
 
 ### 2.2 Request representation
 
-Koa and Vapr differ in their approaches to exposing information about an incoming HTTP request. While both frameworks provide things like the [request target](https://tools.ietf.org/html/rfc7230#section-5.3) (also called the "URI"), [route parameters](https://github.com/JoshuaWise/vapr#routing), [headers](https://tools.ietf.org/html/rfc7230#section-3.2), [protocol version](https://tools.ietf.org/html/rfc7230#section-2.6), etc., Koa takes the additional step of providing methods for interpreting various common headers. As an example, Koa provides [a method](https://github.com/koajs/koa/blob/master/docs/api/request.md#content-negotiation) for reasoning about the meaning of an [Accept](https://tools.ietf.org/html/rfc7231#section-5.3.2) header, should one exist in the request.
+Koa and Vapr take different approaches when exposing information about an incoming HTTP request. While both frameworks provide things like the [request target](https://tools.ietf.org/html/rfc7230#section-5.3) (also called the "URI"), [route parameters](https://github.com/JoshuaWise/vapr#routing), [headers](https://tools.ietf.org/html/rfc7230#section-3.2), [protocol version](https://tools.ietf.org/html/rfc7230#section-2.6), etc., Koa takes the additional step of providing methods for interpreting various common headers. As an example, Koa provides [a method](https://github.com/koajs/koa/blob/master/docs/api/request.md#content-negotiation) for reasoning about the meaning of an [Accept](https://tools.ietf.org/html/rfc7231#section-5.3.2) header, should one exist in the request.
 
 ### 2.3 Response representation
 
