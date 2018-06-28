@@ -239,7 +239,7 @@ Routing in Koa is performed by linearly scanning a list of [regular expressions]
 
 ### 3.1 Defining the criteria
 
-Up until this point, the majority of the study has focused on theory and philosophy. We now intend to showcase the strength of Vapr as a concrete implementation. Discussions of elegance are merely pandering if the program in question cannot handle real-world stress. Real-world programs regularly have to deal with abnormal or invalid input from external systems, unsound program logic introduced by bad programming practices, and heavy work loads that can be burdensome on a system's limited capacity for throughput. The last of these will be covered later in [section 4](#4-performance).
+Up until this point, the majority of the study has focused on theory and philosophy. We now intend to showcase the strength of Vapr as a concrete implementation. Discussions of elegance can be seen as pandering if the program in question cannot handle real-world stress. Real-world programs regularly have to deal with abnormal or invalid input from external systems, unsound program logic introduced by bad programming practices, and heavy work loads that can be burdensome on a system's limited capacity for throughput. The last of these will be covered later in [section 4](#4-performance).
 
 A program is considered *robust* if it's capable of correctly identifying and handling abnormal or invalid input. For example, a program that accepts arbitrary string input but fails to correctly process [multibyte](https://en.wikipedia.org/wiki/UTF-8) characters would not be considered robust.
 
