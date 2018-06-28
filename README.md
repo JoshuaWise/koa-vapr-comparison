@@ -197,7 +197,7 @@ While the lack of these features may seem like an inconvenience to some, Vapr's 
 
 ### 2.3 Response representation
 
-In [section 1.2](#12-plugin-system) we discussed major differences in how Koa and Vapr each deal with response objects. Aside from those differences, differences related to feature completeness also exist, which reflect the differences in philosophy described throughout this section.
+In [section 1.2](#12-plugin-system) we discussed major differences in how Koa and Vapr each deal with response objects. Aside from those differences, differences related to feature completeness also exist which reflect the differences in philosophy described in sections [section 2.1](#21-defining-the-criteria) and [section 2.2](#22-request-representation).
 
 ### 2.4 Routing capabilities
 
