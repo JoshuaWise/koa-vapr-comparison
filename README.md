@@ -227,7 +227,7 @@ route.use(req => res => {
 
 ### 2.4 Routing capabilities
 
-The expected behavior of an HTTP router in Node.js is well established. In short, they're expected to route requests based on pathnames, support parameterized path segments (e.g., `/:id`), and report *404 Not Found* when a matching route does not exist. The routers in both Koa and Vapr will also report *405 Method Not Allowed* when an unsupported HTTP method is requested on an existent pathname, although this is feature is less commonly provided throughout the Node.js ecosystem. Despite the similarities, the two routers are implemented differently, and therefore have a slightly different feature set.
+The expected behavior of an HTTP router in Node.js is well established. In short, they're expected to route requests based on pathnames, support parameterized path segments (e.g., `/:id`), and report *404 Not Found* when a matching route does not exist. In addition, the routers in both Koa and Vapr will report *405 Method Not Allowed* when an unsupported HTTP method is requested on an existent pathname, although this is feature is less commonly provided throughout the Node.js ecosystem. Despite the similarities, the two routers are implemented differently, and therefore have a slightly different feature set.
 
 
 
