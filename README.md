@@ -247,7 +247,7 @@ A program is considered *stable* if it is able to continue operating sensibly in
 
 ### 3.2 Abnormal input
 
-Abnormal conditions are commonplace in any network-based program. Connections can be destroyed unexpectedly, network packets of arbitrarily strange data can be received, and the complexity of serialization formats (such as [escape sequences](https://en.wikipedia.org/wiki/Escape_sequence)) can go unnoticed. All of this remains true for the case of HTTP services in Node.js.
+Abnormal conditions are commonplace in any network-based program. Connections can be destroyed unexpectedly, network packets of arbitrarily strange data can be received, and the complexity of serialization formats can go unnoticed. All of this remains true for the case of HTTP services in Node.js.
 
 For the most part, the core [http](https://nodejs.org/api/http.html) module handles much of the necessary processing of incomming network data. However, there are cases that need to be handled by userland libraries. The examples in this section are not cherry-picked to make Vapr appear artificially more robust, rather, they are a small sample of many sources of common headaches.
 
