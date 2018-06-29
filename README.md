@@ -281,11 +281,22 @@ Strict security-related requirements are also defined for the contents of the Ho
 
 In contrast with unexpected input, another source of instability within a program comes from the program itself. Fragile program logic is frequently introduced by programmers because of short deadlines, hasty refactoring, or poor programming practices. If the backbone of a program (such as an HTTP framework) is also fragile, small errors which could potentially be handled gracefully instead compound into large, program-breaking errors. A stable system should make it very difficult to produce such errors, and should be able to handle a variety of programming styles.
 
-(immutability)
+In dynamic languages, programmers regularly make assumptions about the types of the values they're using. Usually, explicit type-checks are inserted into critical places, and deduction is used (consciously or subconsciously) to infer the types of values as they travel through the flow of the program. This is common practice because it's intuitive and generally works well. However, if an incorrect assumption is made, bugs can easily be introduced. The typical way to break such an assumption is to change the type of variable that gets used by multiple parts of a program. For example, a programmer may parse the value of an HTTP request header and then decide to store the parsed value into the same variable.
 
-(improper response crafting, invalid mutually exclusive response headers)
+```js
+app.get('/', (req) => {
+  const parsedDate = new Date(req.headers.get('date'));
+  req.headers.set('date', parsedDate);
+});
+```
+
+Although this seems like an attractive pattern, it can break the assumptions that other parts of the program (such as third-party plugins) are making about the header variable, leading to bugs. The same can be said for nearly any property of any shared object. To avoid this class of bug altogether, Vapr's request objects are deeply immutable, and mutations to response objects are guarded by setters that perform type validations. Plugins in Vapr are able to trust the values they depend on, introducing dependability and stability to complex programs.
 
 In Koa, the *next* function is used to travel through the application's plugin tree, returning a promise for when the plugin stack has finally returned to its original point. When a plugin needs to execute late logic, it's standard to *await* this promise in an async function, executing the late logic afterwards. While this seems like a great idea in principle, in practice it introduces fragility to the system. Imagine that the programmer forgets to include the *await* operator. The plugin would be executing in parallel with the rest of the plugin tree, putting the program into an undefined state. One feature of Vapr's higher-order plugins ([section 1.2](#12-plugin-system)) is that the risk is reduced by avoiding this specific case of programmer error.
+
+While Koa relies on Node.js streams for piping data, Vapr utilizes [rivers](https://github.com/JoshuaWise/wise-river). As discussed in [section 1.5](#15-asynchronous-interface), Node.js streams do not exhibit error propagation or resource management and they can be read after being consumed. Each of these properties can be the cause of either memory leaks or logical program bugs. Similar to callback-passing, it's very easy to use Node.js streams incorrectly, which reduces the stability of any program utilizing them. In contrast, the high-level nature of rivers eliminate these sources of bugs. Using high-level tools typically improve code readibility as well, making it easier for programmers to express the necessary logic, further reducing the risk of human error.
+
+> An executable example exists for the topic above: `npm run stream-bugs`
 
 ### 3.5 Dependencies
 
