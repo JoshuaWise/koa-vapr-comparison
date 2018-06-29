@@ -298,7 +298,7 @@ Another source of programmer error is simply the usage of difficult-to-use tools
 
 ### 3.5 Dependencies
 
-(koa has many, vapr has few)
+One of the primary advantages of the Node.js platform is its large ecosystem of reusable software packages. Leveraging this ecosystem is a powerful way to reduce the development and research time required to solve standard problems. Although a person could spend hours carefully reading standards documents to learn how to properly implement various aspects of the HTTP protocol, it's often just as effective to use a tool written by someone who has already done so. Despite this, a program with more third-party dependencies is a program with less control over its own longevity. Packages frequently become neglected and unmaintained for years at a time. This is especially true for smaller packages that are assumed to change infrequently due to their simplicity. The risk here is that when such a package actually does need to be updated, the original maintainer is no longer active, and it may become a laborious process to get it replaced. Koa depends on many small packages that each perform arguably trivial tasks. Vapr prefers to be responsible for its own code, with the exception of only three dependencies that are all written by the same author as Vapr itself. Despite having few dependencies, Vapr still remains as lean as Koa in regards to the size of its codebase.
 
 ## 4. Performance
 
