@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "An opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.",
   "scripts": {
-    "uri-normalization": "node ./cases/3.stability-and-robustness/3.1.abnormal-input/uri-normalization",
-    "header-artifacts": "node ./cases/3.stability-and-robustness/3.1.abnormal-input/header-artifacts",
-    "aborted-requests": "node ./cases/3.stability-and-robustness/3.1.abnormal-input/aborted-requests",
-    "uri-validation": "node ./cases/3.stability-and-robustness/3.2.invalid-input/uri-validation",
-    "host-validation": "node ./cases/3.stability-and-robustness/3.2.invalid-input/host-validation",
-    "stream-bugs": "node ./cases/3.stability-and-robustness/3.3.unsound-program-logic/stream-bugs"
+    "uri-normalization": "node ./cases/3.1.abnormal-input/uri-normalization",
+    "header-artifacts": "node ./cases/3.1.abnormal-input/header-artifacts",
+    "aborted-requests": "node ./cases/3.1.abnormal-input/aborted-requests",
+    "uri-validation": "node ./cases/3.2.invalid-input/uri-validation",
+    "host-validation": "node ./cases/3.2.invalid-input/host-validation",
+    "stream-bugs": "node ./cases/3.3.unsound-program-logic/stream-bugs"
   },
   "repository": {
     "type": "git",
