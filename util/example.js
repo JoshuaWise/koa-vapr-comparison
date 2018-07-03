@@ -29,10 +29,12 @@ exports.vapr = async (fn) => {
 
 const success = (name) => (value) => {
   console.log(clc.green(`${name}:`));
-  console.log(String(value));
+  console.log(value);
+  console.log('');
 };
 
 const failure = (name) => (reason) => {
   console.log(clc.red(`${name} (ERROR):`));
-  console.log(String(reason));
+  console.log(value);
+  console.log('');
 };
