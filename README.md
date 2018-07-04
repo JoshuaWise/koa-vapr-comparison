@@ -296,6 +296,8 @@ One of the advantages of the Node.js platform is its large ecosystem of reusable
 
 ### 4.1 Defining the criteria
 
+TODO
+
 ### 4.2 Scaling a router
 
 ### 4.3 Benchmarking errors
