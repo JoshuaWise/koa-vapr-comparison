@@ -4,12 +4,14 @@ const headerRegexp = /^([^:]+):[ \t]*([^\r\n]*)[ \t]*\r\n/;
 const emptyLine = /^\r\n/;
 
 module.exports = (str) => {
+	if (!str) throw new Error('The request was rejected');
 	const response = {};
 	const statusLine = str.match(statusLineRegexp);
 	if (!statusLine) throw new Error('Invalid HTTP status line');
 	response.version = statusLine[1];
 	response.code = +statusLine[2];
 	response.message = statusLine[3];
+	if (response.code > 400) throw new Errro(`${response.code} response: ${response.message}`);
 	str = str.slice(statusLine[0].length);
 	response.headers = {};
 	while (!emptyLine.test(str)) {
