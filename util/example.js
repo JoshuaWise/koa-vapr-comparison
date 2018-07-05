@@ -6,7 +6,7 @@ const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const Vapr = require('vapr');
 
-exports.koa = async (fn) => {
+exports.koa = async (fn, startup = true) => {
   const app = new Koa;
   const router = new KoaRouter;
   const server = http.createServer(app.callback());
@@ -19,7 +19,7 @@ exports.koa = async (fn) => {
     .then(() => server.close());
 };
 
-exports.vapr = async (fn) => {
+exports.vapr = async (fn, startup = true) => {
   const app = Vapr();
   const server = http.createServer(app);
   server.keepAliveTimeout = 100;

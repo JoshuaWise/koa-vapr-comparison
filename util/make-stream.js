@@ -38,6 +38,4 @@ const finish = (self) => {
 	setImmediate(() => { self.emit('close'); });
 };
 
-// Given an iterable object, this function returns a readable stream that emits
-// the items found in the iterable object.
 module.exports = (...args) => new Stream(...args);
