@@ -7,7 +7,8 @@
     "header-artifacts": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/header-artifacts",
     "aborted-requests": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/aborted-requests",
     "uri-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/uri-validation",
-    "host-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/host-validation"
+    "host-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/host-validation",
+    "scaling-a-router": "npm install &>/dev/null && node ./cases/4.2.scaling-a-router/benchmark"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "cli-color": "^1.2.0",
     "koa": "^2.5.1",
     "koa-router": "^7.4.0",
+    "nodemark": "^0.3.0",
     "vapr": "^0.5.1"
   }
 }
