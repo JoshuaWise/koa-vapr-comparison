@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "description": "An opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.",
   "scripts": {
-    "uri-normalization": "npm install &>/dev/null && node ./cases/3.1.abnormal-input/uri-normalization",
-    "header-artifacts": "npm install &>/dev/null && node ./cases/3.1.abnormal-input/header-artifacts",
-    "aborted-requests": "npm install &>/dev/null && node ./cases/3.1.abnormal-input/aborted-requests",
-    "uri-validation": "npm install &>/dev/null && node ./cases/3.2.invalid-input/uri-validation",
-    "host-validation": "npm install &>/dev/null && node ./cases/3.2.invalid-input/host-validation",
-    "stream-bugs": "npm install &>/dev/null && node ./cases/3.3.unsound-program-logic/stream-bugs"
+    "uri-normalization": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/uri-normalization",
+    "header-artifacts": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/header-artifacts",
+    "aborted-requests": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/aborted-requests",
+    "uri-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/uri-validation",
+    "host-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/host-validation"
   },
   "repository": {
     "type": "git",
