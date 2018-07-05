@@ -315,6 +315,4 @@ TODO
 
 ### 4.2 Scaling a router
 
-### 4.3 Benchmarking errors
-
-### 4.4 Overall latency
+### 4.3 Overall latency
