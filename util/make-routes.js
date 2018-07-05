@@ -16,13 +16,16 @@ module.exports = (segments, polymorphism = 1) => {
 
 const makeRoutes = (segments) => {
 	const params = new Array(segments.length).fill().map((_, i) => ':param' + i);
-	const branch = (prev) => {
-		if (prev.length === segments.length) return [prev];
+	const routes = [];
+	(function branch(prev) {
+		if (prev.length === segments.length) return;
 		const a = prev.concat(segments[prev.length]);
 		const b = prev.concat(params[prev.length]);
-		return [prev, ...branch(a), ...branch(b)];
-	};
-	return branch([]).slice(1);
+		routes.push(a, b);
+		branch(a);
+		branch(b);
+	})([]);
+	return routes;
 };
 
 const similarRoute = (routes, oldRoute, prefix) => {
