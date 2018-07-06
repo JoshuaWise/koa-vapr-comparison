@@ -343,7 +343,7 @@ As an example, let's say the developer of a framework boasts that their framewor
 
 Another problem with the sterotypical micro-benchmark is its lack of [code coverage](https://en.wikipedia.org/wiki/Code_coverage). An HTTP benchmark that simply emits "hello world" will not measure the efficiency of, e.g., traversing a plugin tree, curating header fields, or streaming large files. Nearly all of the features provided by the framework are avoided in micro-benchmarks. As an example, Vapr exposes header fields as [Map objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) instead of plain objects and, although maps are known to [perform better](https://jsperf.com/javascript-objects-vs-map-performance) than plain objects (though this is not the reason they're used in Vapr), they are not represented in regular micro-benchmarks. The same thing can be said for nearly every desirable feature of an HTTP framework, causing most micro-benchmarks to be more misleading than helpful.
 
-Despite the flaws described above, to satisfy the curiosity of the reader, benchmark results are shown below comparing Vapr with other popular HTTP frameworks in Node.js.
+To satisfy the curiosity of the reader (despite the disclaimer above), benchmark results are shown below comparing Vapr with other popular HTTP frameworks in Node.js.
 
 - Machine: MacBook Pro (Mid 2014, 2.8 GHz Intel Core i7, 16 GB 1600 MHz DDR3)
 - Node: v10.6.0
