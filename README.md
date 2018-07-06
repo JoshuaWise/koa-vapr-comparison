@@ -329,7 +329,7 @@ Routing in Vapr is implemented using radix trees. Besides the benefits described
 
 ![Graph of router throughput as application size increases](./images/router-throughput.png)
 
-While many applications won't be affected by router performance in Koa, it's an unfortunate penalty to place on large applications. In Vapr, the issue is avoided altogether, ensuring that the underlying framework will not be a concern regardless of program size.
+While many applications won't be affected by router performance in Koa, an unfortunate penalty awaits those large applications that are. In Vapr, the issue is avoided altogether, ensuring that the underlying framework will not be a concern regardless of program size.
 
 > Run the benchmark: `npm run scaling-a-router`
 
