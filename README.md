@@ -321,6 +321,10 @@ TODO
 
 TODO
 
+- Machine: MacBook Pro (Mid 2014, 2.8 GHz Intel Core i7, 16 GB 1600 MHz DDR3)
+- Node: v8.11.3
+- Method: [fastify/benchmarks](https://github.com/fastify/benchmarks) (all default settings)
+
 |                  | Version       | Requests/s |
 | ---------------- | ------------- | ----------:|
 | fastify          | 1.6.0         | 44285      |
