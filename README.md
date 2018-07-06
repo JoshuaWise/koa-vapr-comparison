@@ -347,7 +347,7 @@ To satisfy the curiosity of the reader (despite the disclaimer above), benchmark
 
 - Machine: MacBook Pro (Mid 2014, 2.8 GHz Intel Core i7, 16 GB 1600 MHz DDR3)
 - Node: v10.6.0
-- Method: [fastify/benchmarks](https://github.com/fastify/benchmarks) (all default settings)
+- Benchmark: [fastify/benchmarks](https://github.com/fastify/benchmarks) (all default settings)
 
 |                  | Version       | Requests/s |
 | ---------------- | ------------- | ----------:|
