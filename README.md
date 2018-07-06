@@ -363,4 +363,14 @@ Although speed was not one of the primary design goals behind Vapr, it outperfor
 
 ## Conclusion
 
-TODO
+In Node.js, moreso than nearly any other major programming environment, the similarities between popular HTTP frameworks are striking. After years of stagnation, a powerful, forward thinking framework was introduced in the form of Koa. By introucing concepts such as late logic, by supporting promises and async functions as first-class citizens, and by setting a precedent for being both high-level and unopinionated, Koa set itself apart from existing frameworks.
+
+Using Koa as a point of research, Vapr was scrupulously developed over the course of six months with the ambition of refining the ideas introduced by Koa, pushing the envelope further. Vapr was designed with three primary goals in mind:
+
+- Provide a strictly high-level, functional foundation for building HTTP services
+- Be as pure and unopinionated as possible
+- Be diligent about security and correctness, protecting against low-level/lesser-known problems
+
+Throughout this study, we've covered topics such as power, elegance, and design philosophy, as well as robustness, safety, and performance. We've shown how the power of [rivers](#15-asynchronous-interface) can tremendously simplify a codebase, while preventing programmer error and improving efficiency. We've also shown how a simplified [program structure]((#13-program-structure) and intuitive [plugin system](#12-plugin-system) can make it easier to scale a program's complexity, with residual benefits in [performance](#42-scaling-a-router). And lastly, we've shown how a diligent development period has resulted in a more [robust and safe](#3-stability-and-robustness) framework.
+
+Every application has its own, unique set of requirements, and each framework fits into those requirements to varying degrees. Frameworks like [Express](https://github.com/expressjs/express), [Restify](https://github.com/restify/node-restify), and [Fastify](https://github.com/fastify/fastify) are more opinionated, which means they may be more appropriate for some applications than others. The attractiveness of an unopinionated framework is that a single tool may be used to solve a great variety of problems. It was Koa's ambition to be such a tool, and Vapr's ambition to take the idea even further. Through the accounts and observations in this study, we believe both Koa and Vapr have realized those ambitions, respectively.
