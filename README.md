@@ -369,7 +369,7 @@ Using Koa as a point of research, Vapr was scrupulously developed over the cours
 
 - Provide a strictly high-level, functional-style foundation for building HTTP services
 - Be as pure and unopinionated as possible
-- Be diligent about security and correctness, protecting against low-level/lesser-known problems
+- Be diligent about security and correctness, protecting against low-level and lesser-known problems
 
 Throughout this study, we've covered topics such as power, elegance, and design philosophy, as well as robustness, safety, and performance. We've shown how the power of [rivers](#15-asynchronous-interface) can tremendously simplify a codebase, while preventing programmer error and improving efficiency. We've also shown how a simplified [program structure]((#13-program-structure) and intuitive [plugin system](#12-plugin-system) can make it easier to scale a program's complexity, with residual benefits in [performance](#42-scaling-a-router). And lastly, we've shown how a diligent development period has resulted in a more [robust and safe](#3-stability-and-robustness) framework.
 
