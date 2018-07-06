@@ -315,7 +315,7 @@ Depending on the nature of a program, its developers may be concerned with the a
 
 ### 4.2 Scaling a router
 
-In nearly all HTTP frameworks for Node.js, routing is implemented by scanning a list of regular expressions until one is matched. This means routing is performed in linear time proportionate to the number of routes within the application. For small services that only have ten or twenty routes, this is effectively a non-issue. However, it's not abnormal for very large services to have over one-hundred routes at a time, raising a legitimate concern.
+In nearly all HTTP frameworks for Node.js, routing is implemented by scanning a list of regular expressions until one is matched. This means routing is performed in linear time proportionate to the number of routes within the application. For small services that only have ten or twenty routes, this is effectively a non-issue. However, it's not abnormal for very large services to have more than one-hundred routes at a time, raising a legitimate concern.
 
 Routing in Vapr is implemented using radix trees. Besides the benefits described in [section 1.4](#14-routing), this implementation does not suffer from efficiency issues when a large number of routes are required—routing is performed in constant time.
 
