@@ -1,6 +1,6 @@
 {
   "name": "koa-vapr-comparison",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.",
   "scripts": {
     "uri-normalization": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/uri-normalization",
