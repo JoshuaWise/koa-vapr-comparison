@@ -361,6 +361,6 @@ Despite the flaws of these benchmarks, and to satisfy the curiosity of the reade
 
 Although speed was not one of the primary design goals behind Vapr, it outperforms every other popular framework besides [Fastify](https://github.com/fastify/fastify) in a naive "hello world" benchmark. As explained above, this does not mean the performance of your application will tremendously improve by switching to Vapr. It does, however, imply that Vapr will not get in the way of knowledgeable developers writing high-performance applications.
 
-### Conclusion
+## Conclusion
 
 TODO
