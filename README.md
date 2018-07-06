@@ -311,7 +311,7 @@ One of the advantages of the Node.js platform is its large ecosystem of reusable
 
 ### 4.1 Defining the criteria
 
-Some programs may be interested in the amount of throughput they're able to handle at a given time. Fortunately, in Node.js, HTTP frameworks typically induce a negligible amount of overhead compared to the work of the application itself—they are almost never the source of a bottleneck. However, there are some circumstances where unsuspecting HTTP frameworks may be the cause of meaningful amounts of overhead. In addition, if the work done by the application is extremely lightweight, framework overhead may become a question of concern.
+Some programs may be interested in the amount of throughput they're able to handle at a given time. Fortunately, in Node.js, HTTP frameworks typically induce a negligible amount of overhead compared to the work of the application itself. However, there are some circumstances where unsuspecting HTTP frameworks may be the cause of meaningful amounts of overhead. In addition, if the work done by the application is extremely lightweight, framework overhead may become a question of concern.
 
 In this section, we'll address a few possible situations where an HTTP framework may cause substantial slowdowns in an application, followed by a discussion on micro-benchmarking.
 
