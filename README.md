@@ -324,6 +324,7 @@ Routing in Vapr is implemented using radix trees. Besides the benefits described
 While only a minority of applications will be affected by router performance in Koa, it may become a difficult symptom to diagnose. In Vapr, the issue is eliminated altogether, ensuring that the underlying framework will not be a concern regardless of program size.
 
 > Run the benchmark: `npm run scaling-a-router`
+
 > When Vapr traverses its radix trees, there are some cases where it need to backtrack in order to find the correct route. Although substantial backtracking is rare, the benchmark above is intentionally tuned to cause the *maximum* amount of backtracking possible, simulating a pathological program where Vapr's algorithm performs in the worst possible way. Despite this, it still outperforms Koa in every test.
 
 ### 4.3 Resource management
