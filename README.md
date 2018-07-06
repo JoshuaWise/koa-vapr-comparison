@@ -315,4 +315,19 @@ TODO
 
 ### 4.2 Scaling a router
 
+TODO
+
 ### 4.3 Overall latency
+
+TODO
+
+|                  | Version       | Requests/s |
+| ---------------- | ------------- | ----------:|
+| fastify          | 1.6.0         | 44285      |
+| vapr             | 0.5.1         | 39331      |
+| http.Server      | 8.11.2        | 39075      |
+| restify          | 7.2.1         | 32461      |
+| koa + koa-router | 2.5.1 + 7.4.0 | 29333      |
+| express          | 4.16.3        | 28014      |
+| hapi             | 17.5.1        | 25179      |
+
