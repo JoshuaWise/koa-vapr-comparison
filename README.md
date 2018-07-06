@@ -322,16 +322,15 @@ TODO
 TODO
 
 - Machine: MacBook Pro (Mid 2014, 2.8 GHz Intel Core i7, 16 GB 1600 MHz DDR3)
-- Node: v8.11.3
+- Node: v10.6.0
 - Method: [fastify/benchmarks](https://github.com/fastify/benchmarks) (all default settings)
 
 |                  | Version       | Requests/s |
 | ---------------- | ------------- | ----------:|
-| fastify          | 1.6.0         | 44285      |
-| vapr             | 0.5.1         | 39331      |
-| http.Server      | 8.11.2        | 39075      |
-| restify          | 7.2.1         | 32461      |
-| koa + koa-router | 2.5.1 + 7.4.0 | 29333      |
-| express          | 4.16.3        | 28014      |
-| hapi             | 17.5.1        | 25179      |
-
+| http.Server      | 10.6.0        | 62026      |
+| fastify          | 1.6.0         | 60816      |
+| vapr             | 0.5.1         | 45290      |
+| restify          | 7.2.1         | 38499      |
+| koa + koa-router | 2.5.1 + 7.4.0 | 37259      |
+| hapi             | 17.5.1        | 33930      |
+| express          | 4.16.3        | 31189      |
