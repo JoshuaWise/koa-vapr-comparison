@@ -311,13 +311,29 @@ One of the advantages of the Node.js platform is its large ecosystem of reusable
 
 ### 4.1 Defining the criteria
 
-TODO
+Some programs may be interested in the amount of throughput they're able to handle at a given time. Fortunately in Node.js, HTTP frameworks typically induce a negligible amount of overhead compared to the work of the application itself—they are almost never the source of a bottleneck. However, there are some circumstances where unsuspecting HTTP frameworks may be the cause of meaningful amounts of overhead. In addition, if the work done by the application is extremely lightweight, framework overhead may become a question of concern.
+
+In this section, we'll address a few possible situations where an HTTP framework may cause substantial slowdowns in an application, followed by a discussion on micro-benchmarking.
 
 ### 4.2 Scaling a router
 
+In nearly all HTTP frameworks for Node.js, routing is implemented by scanning a list of regular expressions until one is matched. This means routing is performed in linear time with respect to the number of routes needed by the application. For small services that only have ten or twenty different routes, this is effectively a non-issue. However, it's not abnormal for very large services to contain close to one-hundred routes at a time, raising a legitimate concern.
+
+Routing in Vapr is implemented using radix trees. Besides the benefits described in [section 1.4](#14-routing), this implementation does not suffer from efficiency issues when a large number of routes are required—routing is performed in constant time.
+
+![Graph of router throughput as application size increases](./images/router-throughput.png)
+
+While only a minority of applications will be affected by router performance in Koa, it may become a difficult symptom to diagnose. In Vapr, the issue is eliminated altogether, ensuring that the underlying framework will not be a concern regardless of program size.
+
+> When Vapr traverses its radix trees, there are some cases where it need to backtrack in order to find the correct route. Although substantial backtracking is rare, the benchmark below is intentionally tuned to cause the *maximum* amount of backtracking possible, simulating a pathological program where Vapr's algorithm performs in the worst possible way. Despite this, it still outperforms Koa in every benchmark.
+
+> Run the benchmark: `npm run scaling-a-router`
+
+### 4.3 Resource management
+
 TODO
 
-### 4.3 Overall latency
+### 4.4 Overall throughput
 
 TODO
 
