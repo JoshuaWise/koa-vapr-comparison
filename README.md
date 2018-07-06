@@ -367,7 +367,7 @@ In Node.js, more so than any other major programming environment, the similariti
 
 Using Koa as a point of research, Vapr was scrupulously developed over the course of six months with the ambition of refining the ideas introduced by Koa, pushing the envelope further. Vapr was designed with three primary goals in mind:
 
-- Provide a strictly high-level, functional-style foundation for building HTTP services
+- Provide a high-level, functional-style foundation for building HTTP services
 - Be as pure and unopinionated as possible
 - Be diligent about security and correctness, protecting against low-level and lesser-known problems
 
