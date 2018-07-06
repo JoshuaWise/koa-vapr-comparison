@@ -363,7 +363,7 @@ Although speed was not one of the primary design goals behind Vapr, it outperfor
 
 ## Conclusion
 
-In Node.js, moreso than nearly any other major programming environment, the similarities between popular HTTP frameworks are striking. After years of stagnation, a powerful, forward thinking framework was introduced in the form of Koa. By introucing concepts such as late logic, by supporting promises and async functions as first-class citizens, and by setting a precedent for being both high-level and unopinionated, Koa set itself apart from existing frameworks.
+In Node.js, moreso than any other major programming environment, the similarities between popular HTTP frameworks are striking. After years of stagnation, a powerful, forward thinking framework was introduced in the form of Koa. By introucing concepts such as late logic, by supporting promises and async functions as first-class citizens, and by setting a precedent for being both high-level and unopinionated, Koa set itself apart from existing frameworks.
 
 Using Koa as a point of research, Vapr was scrupulously developed over the course of six months with the ambition of refining the ideas introduced by Koa, pushing the envelope further. Vapr was designed with three primary goals in mind:
 
