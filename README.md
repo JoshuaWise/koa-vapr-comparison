@@ -2,6 +2,14 @@
 
 This is an opinionated study into the theory and practice of Koa and Vapr as competing HTTP frameworks.
 
+- [Background](#background)
+- [Overview](#overview)
+- [1. Power and Elegance](#1-power-and-elegance)
+- [2. Feature Completeness](#2-feature-completeness)
+- [3. Stability and Robustness](#3-stability-and-robustness)
+- [4. Performance](#4-performance)
+- [Conclusion](#conclusion)
+
 ## Background
 
 Throughout the Node.js ecosystem, there exist many popular frameworks for building HTTP-based services. Some of these frameworks are very tailored towards specific use cases, and are not appropriate for the general case. Others, which are usually the most popular ones, are very general and may be applied to almost any HTTP-related task (aside from proxy servers, which are beyond the scope of this study). Notable examples include [Express](https://github.com/expressjs/express), [Restify](https://github.com/restify/node-restify), [Fastify](https://github.com/fastify/fastify), [Hapi](https://github.com/hapijs/hapi), and [Koa](https://github.com/koajs/koa). Adding to that list, [Vapr](https://github.com/JoshuaWise/vapr) is a new generic HTTP framework (created by the same author as this study). In particular, Koa and Vapr are of heightened interest. Both of these frameworks have similar capabilities, share similar design principles, and, by the opinions of this author, are the most advanced in terms of providing high-level functionality in exchange for minimal code use. Perhaps the most important quality though, is that both Koa and Vapr are the least opinionated of these frameworks (in the context of an HTTP framework, being "opinionated" is defined by providing features related to specific application use cases, rather than just matters relevant to the HTTP procotol). Although a more complete study would include all of the aforementioned frameworks, for the reasons just stated we will only focus on comparing Koa and Vapr.
@@ -311,7 +319,7 @@ One of the advantages of the Node.js platform is its large ecosystem of reusable
 
 ### 4.1 Defining the criteria
 
-Depending on the nature of a program, its developers may be concerned with the amount of throughput the program can handle at a given time. In Node.js, HTTP frameworks typically induce a negligible amount of overhead compared to the work of the application itself. However, there are some circumstances where unsuspecting HTTP frameworks may be the cause of meaningful amounts of overhead. In addition, if the work done by the application is extremely lightweight, framework overhead may become a question of concern. In this section, we'll address a few possible situations where an HTTP framework may cause substantial slowdowns in an application, followed by a discussion on micro-benchmarking.
+Depending on the nature of a program, its developers may be concerned with the amount of throughput the program can handle at a given time. In Node.js, HTTP frameworks typically induce a negligible amount of overhead compared to the work of the application itself. However, there are some circumstances where unsuspecting HTTP frameworks may be the cause of meaningful amounts of overhead. In addition, if the work done by the application is extremely lightweight, framework overhead may become a question of concern. In this section, we'll address a possible situation where an HTTP framework may cause substantial slowdowns in an application, followed by a discussion on micro-benchmarking.
 
 ### 4.2 Scaling a router
 
@@ -327,13 +335,15 @@ While many applications won't be affected by router performance in Koa, it's an 
 
 > When Vapr traverses its radix trees, there are some cases where it need to backtrack in order to find the correct route. Although substantial backtracking is rare, the benchmark above is intentionally tuned to cause the *maximum* amount of backtracking possible, simulating a pathological program where Vapr's algorithm performs in the worst possible way. Despite this, it still outperforms Koa in every test.
 
-### 4.3 Resource management
+### 4.3 Overall throughput
 
-TODO
+Many libraries and frameworks boast performance claims backed up by *micro-benchmarks*. These benchmarks are meant to measure the overhead of the library itself, void of any real application logic. In some cases, the benchmarks can be enlightening—particularly when the measured work is similar to work that would be done in a real-world program. However, more often than not, benchmarks are used to mislead people into trusting the quality of a library based on a measurement that will probably never become relevant to any real-world program.
 
-### 4.4 Overall throughput
+As an example, let's say the developer of an HTTP framework boasts that their framework is able to perform 10,000 more requests per second than a competing framework. On the surface, that sounds quite impressive. However, the benchmark measures the throughput of a program that does nothing other than respond with "hello world" to any incoming request. A real-world program that needs to interact with a database, perform CPU-heavy tasks, connect with external HTTP services, or even just stream files from a storage device will likely not be able to service 10,000 requests per second regardless of the framework being used. Unless a situation occurs such as the one described in [section 4.2](#42-scaling-a-router) (where a service such as Koa has hundreds or thousands of routes), the framework overhead will likely be immeasurable within the noise caused by real-world tasks.
 
-TODO
+Another problem with micro-benchmarking is their lack of [code coverage](https://en.wikipedia.org/wiki/Code_coverage). An HTTP benchmark that only emits "hello world" is not measuring the efficiency of curating header fields, or of traversing a plugin tree, or of streaming large files. Nearly all of the features provided by the framework are avoided in micro-benchmarks. As an example, Vapr exposes header fields as [Maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) instead of plain objects and, although maps are known to [perform better](https://jsperf.com/javascript-objects-vs-map-performance) than plain objects (though this is not the reason they're used in Vapr), they are not represented in typical micro-benchmarks. The same thing can be said for nearly every desirable feature of an HTTP framework, causing most micro-benchmarks to be more misleading than helpful.
+
+Despite the flaws of these benchmarks, and to satisfy the curiosity of the reader, benchmark results are shown below comparing Vapr with other popular HTTP frameworks in Node.js.
 
 - Machine: MacBook Pro (Mid 2014, 2.8 GHz Intel Core i7, 16 GB 1600 MHz DDR3)
 - Node: v10.6.0
@@ -348,3 +358,9 @@ TODO
 | koa + koa-router | 2.5.1 + 7.4.0 | 37259      |
 | hapi             | 17.5.1        | 33930      |
 | express          | 4.16.3        | 31189      |
+
+Although speed was not one of the primary design goals behind Vapr, it outperforms every other popular framework besides [Fastify](https://github.com/fastify/fastify) in a naive "hello world" benchmark. As explained above, this does not mean the performance of your application will tremendously improve by switching to Vapr. It does, however, imply that Vapr will not get in the way of knowledgeable developers writing high-performance applications.
+
+### Conclusion
+
+TODO
