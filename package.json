@@ -8,8 +8,7 @@
     "aborted-requests": "npm install &>/dev/null && node ./cases/3.2.abnormal-input/aborted-requests",
     "uri-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/uri-validation",
     "host-validation": "npm install &>/dev/null && node ./cases/3.3.invalid-input/host-validation",
-    "scaling-a-router": "npm install &>/dev/null && node ./cases/4.2.scaling-a-router/benchmark",
-    "overall-latency": "npm install &>/dev/null && node ./cases/4.3.overall-latency/benchmark"
+    "scaling-a-router": "npm install &>/dev/null && node ./cases/4.2.scaling-a-router/benchmark"
   },
   "repository": {
     "type": "git",
