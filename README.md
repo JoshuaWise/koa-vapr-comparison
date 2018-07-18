@@ -244,7 +244,7 @@ It's worth noting that Koa also provides direct support for JSON response bodies
 ```js
 route.use(req => res => {
   res.body = JSON.stringify(res.body);
-  res.headers.set('Content-Type', 'application/json; charset=utf-8');
+  res.headers.set('Content-Type', 'application/json');
 });
 ```
 
